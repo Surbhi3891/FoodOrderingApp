@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "752923294964",
+    "firebase_url": "https://foodie-571d9-default-rtdb.firebaseio.com",
+    "project_id": "foodie-571d9",
+    "storage_bucket": "foodie-571d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:752923294964:android:3de7c0294cac053aad72a1",
+        "android_client_info": {
+          "package_name": "my.foodie.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "752923294964-hkvosm95sa1kmmk9m46h654kfldie9aq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDH8TzTXN_JaP2Q3IMK72h0KHakoc92nSA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "752923294964-hkvosm95sa1kmmk9m46h654kfldie9aq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

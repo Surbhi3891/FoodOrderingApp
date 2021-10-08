@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="20dp"
+    tools:context=".MainMenu">
+
+    <ImageView
+        android:id="@+id/bg2"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bckgnd" />
+
+    <LinearLayout
+        android:id="@+id/linearlayout"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:background="@drawable/background_color"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/foodapptv"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:fontFamily="@font/aclonica"
+            android:gravity="center"
+            android:text="My Food App"
+            android:textColor="#E61C1C"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/aref_ruqaa"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="Eat, Save and Stay Healthy !"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold|italic" />
+
+        <Button
+            android:id="@+id/signin_email"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/buttonred"
+            android:drawableLeft="@drawable/ic_baseline_email_24"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:text="SIGNIN WITH EMAIL"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/signin_phone"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/buttonblue"
+            android:drawableLeft="@drawable/ic_baseline_phone_24"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:text="SIGNIN WITH PHONE"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/OR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingTop="20dp"
+            android:text="NOT A USER?"
+            android:textColor="#121111" />
+
+        <Button
+            android:id="@+id/signup"
+            android:layout_width="250dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/buttongreen"
+            android:gravity="center"
+            android:text="SIGN UP"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/drawable/background_color.xml" value="0.22777777777777777" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/drawable/button1.xml" value="0.22" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/drawable/buttonblue.xml" value="0.22777777777777777" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/drawable/buttongreen.xml" value="0.22777777777777777" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_chef_email_login.xml" value="0.271286231884058" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_chef_phone_login.xml" value="0.2734375" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_chef_register.xml" value="0.22" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_customer_email_login.xml" value="0.2734375" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_customer_phone_login.xml" value="0.2734375" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_customer_register.xml" value="0.271286231884058" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_driver_email_login.xml" value="0.2734375" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_driver_phone_login.xml" value="0.2734375" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_driver_register.xml" value="0.271286231884058" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_main.xml" value="0.2359375" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_main_menu.xml" value="0.25" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_select_login.xml" value="0.1875" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_selectt_login.xml" value="0.2734375" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_update_profile.xml" value="0.18489583333333334" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_user_profile.xml" value="0.2694746376811594" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
