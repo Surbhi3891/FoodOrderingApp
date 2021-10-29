@@ -111,7 +111,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <RadioGroup
+            <!--RadioGroup
                 android:id="@+id/rg_types_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -140,7 +140,25 @@
                     android:text="Chef and Customer"
                     android:textSize="16sp"
                     tools:ignore="TouchTargetSizeCheck" />
-            </RadioGroup>
+            </RadioGroup-->
+            <CheckBox
+                android:id="@+id/cb_chef_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chef"
+                android:textSize="16sp" />
+            <CheckBox
+                android:id="@+id/cb_cust_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Customer"
+                android:textSize="16sp" />
+            <CheckBox
+                android:id="@+id/cb_driver_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Driver"
+                android:textSize="16sp" />
 
             <TextView
 

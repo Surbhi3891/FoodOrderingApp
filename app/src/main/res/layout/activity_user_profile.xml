@@ -7,6 +7,28 @@
     android:background="@drawable/bckgnd2"
     tools:context=".UserProfile">
 
+    <!--com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_nav"
+        android:background="@color/Red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/bottom_menu"/>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView2"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/bottom_nav" /-->
+
     <LinearLayout
         android:layout_width="300dp"
         android:layout_height="500dp"
@@ -106,7 +128,7 @@
             android:layout_marginTop="8dp"
             android:textSize="20sp" />
 
-        <Button
+        <!--Button
             android:id="@+id/updateProfile_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -114,7 +136,41 @@
             android:text="Update Profile"
             android:textColor="#Ffffff"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold" /-->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/updateProfile_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/buttongreen"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="Update "
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/logoutBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/buttonred"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="Logout"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

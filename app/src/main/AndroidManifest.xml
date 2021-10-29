@@ -11,6 +11,12 @@
         android:theme="@style/Theme.Foodie"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".CustomerView"
+            android:exported="true" />
+        <activity
+            android:name=".RecyclerViewNav"
+            android:exported="true" />
+        <activity
             android:name=".Update_Profile"
             android:exported="true" />
         <activity

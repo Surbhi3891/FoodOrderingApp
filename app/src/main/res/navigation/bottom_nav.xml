@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav"
+    app:startDestination="@id/chefHomeFragment">
+
+    <fragment
+        android:id="@+id/chefHomeFragment"
+        android:name="my.foodie.app.ChefHomeFragment"
+        android:label="fragment_chef_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/chef_Orders"
+        android:name="my.foodie.app.Chef_Orders"
+        android:label="fragment_chef__orders"
+        tools:layout="@layout/fragment_chef__orders" />
+    <fragment
+        android:id="@+id/chef_PostDish"
+        android:name="my.foodie.app.Chef_PostDish"
+        android:label="fragment_chef__post_dish"
+        tools:layout="@layout/fragment_chef__post_dish" />
+    <fragment
+        android:id="@+id/chefProfile"
+        android:name="my.foodie.app.ChefProfile"
+        android:label="fragment_chef_profile"
+        tools:layout="@layout/fragment_chef_profile" />
+
+</navigation>

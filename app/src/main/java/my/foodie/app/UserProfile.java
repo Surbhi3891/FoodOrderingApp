@@ -27,6 +27,7 @@ public class UserProfile extends AppCompatActivity {
     private DatabaseReference dbRef;
     String userID;
     Button Update;
+    Button signOut;
 
 
     @Override
@@ -39,6 +40,15 @@ public class UserProfile extends AppCompatActivity {
         userID = user.getUid();
 
         Update = (Button)findViewById(R.id.updateProfile_btn);
+        signOut=(Button) findViewById(R.id.logoutBtn);
+        signOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(UserProfile.this,ChefEmailLogin.class));
+            }
+        });
 
         final TextView Fname = (TextView) findViewById(R.id.fname_profile);
         final TextView Lname = (TextView) findViewById(R.id.lname_profile);

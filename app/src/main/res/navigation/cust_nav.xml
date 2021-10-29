@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cust_nav"
+    app:startDestination="@id/cust_Home">
+    <fragment
+        android:id="@+id/cust_Home"
+        android:name="my.foodie.app.Cust_Home"
+        android:label="fragment_cust__home"
+        tools:layout="@layout/fragment_cust__home" />
+    <fragment
+        android:id="@+id/cust_orders"
+        android:name="my.foodie.app.Cust_orders"
+        android:label="fragment_cust_orders"
+        tools:layout="@layout/fragment_cust_orders" />
+    <fragment
+        android:id="@+id/cust_Cart"
+        android:name="my.foodie.app.Cust_Cart"
+        android:label="fragment_cust__cart"
+        tools:layout="@layout/fragment_cust__cart" />
+    <fragment
+        android:id="@+id/cust_Profile"
+        android:name="my.foodie.app.Cust_Profile"
+        android:label="fragment_cust__profile"
+        tools:layout="@layout/fragment_cust__profile" />
+    <activity
+        android:id="@+id/switchType"
+        android:name="my.foodie.app.SelectLogin"
+        android:label="activity_select_login"
+        tools:layout="@layout/activity_select_login" />
+
+</navigation>

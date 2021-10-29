@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/buttonred"
-            android:drawableLeft="@drawable/ic_baseline_email_24"
+            android:drawableLeft="@drawable/ic_baseline_email_white"
             android:gravity="center"
             android:paddingLeft="10dp"
             android:text="SIGNIN WITH EMAIL"

@@ -3,11 +3,13 @@ package my.foodie.app;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -36,6 +38,7 @@ public class Update_Profile extends AppCompatActivity {
     FirebaseDatabase firebaseDB;
     DatabaseReference dbRef_states;
     DatabaseReference userRef;
+    String Logintype_update;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +54,38 @@ public class Update_Profile extends AppCompatActivity {
 
         Save = (Button)findViewById(R.id.Save_update);
         Cancel= (Button)findViewById(R.id.Cancel_update);
-        RadioGroup Login = findViewById(R.id.rg_types_update);
-        RadioButton Logintype_update = findViewById(Login.getCheckedRadioButtonId());
+        //RadioGroup Login = findViewById(R.id.rg_types_update);
+        //RadioButton Logintype_update = findViewById(Login.getCheckedRadioButtonId());
+
+        CheckBox chef = (CheckBox) findViewById(R.id.cb_chef_update);
+        CheckBox cust=(CheckBox) findViewById(R.id.cb_cust_update);
+        CheckBox driver= (CheckBox) findViewById(R.id.cb_driver_update);
+
+        chef.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(chef.isChecked()){
+                    Logintype_update = chef.getText().toString().trim();
+                }
+            }
+        });
+        cust.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(cust.isChecked()){
+                    Logintype_update = Logintype_update+","+cust.getText().toString().trim();
+                }
+            }
+        });
+        driver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(driver.isChecked()){
+
+                    Logintype_update=Logintype_update+","+driver.getText().toString().trim();
+                }
+            }
+        });
 
         EditText fname_update = findViewById(R.id.fname_update);
         EditText lname_update = findViewById(R.id.lname_update);
@@ -84,7 +117,7 @@ public class Update_Profile extends AppCompatActivity {
                     String State = userProfile.state;
                     String Zip = userProfile.zip;
                     String phoneNumber = userProfile.phone;
-                    String type = userProfile.type;
+                    //String type = userProfile.type;
                     int statePosition = adapter.getPosition(State);
 
                     state_update.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -108,7 +141,7 @@ public class Update_Profile extends AppCompatActivity {
                     address_update.setText(Address);
                     city_update.setText(City);
                     state_update.setSelection(statePosition);
-                    Logintype_update.setText(type);
+                    //Logintype_update.setText(type);
                     zip_update.setText(Zip);
 
 
@@ -138,7 +171,7 @@ public class Update_Profile extends AppCompatActivity {
                 String City = city_update.getText().toString().trim();
                 String Zip = zip_update.getText().toString().trim();
                 String phoneNumber = phone_update.getText().toString().trim();
-                String type = Logintype_update.getText().toString().trim();
+                //String type = Logintype_update.getText().toString().trim();
                 userRef.child(userID).child("fname").setValue(firstName);
                 userRef.child(userID).child("lname").setValue(lastName);
                 userRef.child(userID).child("address").setValue(Address);
@@ -146,10 +179,22 @@ public class Update_Profile extends AppCompatActivity {
                 userRef.child(userID).child("city").setValue(City);
                 userRef.child(userID).child("zip").setValue(Zip);
                 userRef.child(userID).child("phone").setValue(phoneNumber);
-                userRef.child(userID).child("type").setValue(type);
+                userRef.child(userID).child("type").setValue(Logintype_update);
+
+                Toast.makeText(Update_Profile.this,"User Profile has been updated..",Toast.LENGTH_LONG).show();
+
+                finish();
+                //startActivity(new Intent (Update_Profile.this,UserProfile.class));
 
 
 
+            }
+        });
+        Cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                //startActivity(new Intent (Update_Profile.this,UserProfile.class));
             }
         });
 

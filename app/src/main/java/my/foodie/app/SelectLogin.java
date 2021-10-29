@@ -26,8 +26,8 @@ public class SelectLogin extends AppCompatActivity {
         //getSupportActionBar().setTitle("Back");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Intent intent = getIntent();
-        String type= intent.getStringExtra("Home").toString().trim();
+        //Intent intent = getIntent();
+        //String type= intent.getStringExtra("Home").toString().trim();
         Button Chef = findViewById(R.id.chef);
         Button Customer = findViewById(R.id.customer);
         Button Delivery = findViewById(R.id.driver);
@@ -35,8 +35,10 @@ public class SelectLogin extends AppCompatActivity {
         Chef.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (type.equals("Email")){
-                    Intent loginemail_Chef = new Intent(SelectLogin.this,ChefEmailLogin.class);
+                Intent loginemail_Chef = new Intent(SelectLogin.this,RecyclerViewNav.class);
+                startActivity(loginemail_Chef);
+                /*if (type.equals("Email")){
+                    Intent loginemail_Chef = new Intent(SelectLogin.this,RecyclerViewNav.class);
                     startActivity(loginemail_Chef);
                     finish();
             }
@@ -49,14 +51,17 @@ public class SelectLogin extends AppCompatActivity {
                     Intent signup_Chef = new Intent(SelectLogin.this,ChefRegister.class);
                     startActivity(signup_Chef);
                     finish();
-                }
+                }*/
             }
         });
 
         Customer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (type.equals("Email")){
+
+                Intent loginemail_Chef = new Intent(SelectLogin.this,CustomerView.class);
+                startActivity(loginemail_Chef);
+                /*if (type.equals("Email")){
                     Intent loginemail_Cust = new Intent(SelectLogin.this,CustomerEmailLogin.class);
                     startActivity(loginemail_Cust);
                     finish();
@@ -70,12 +75,12 @@ public class SelectLogin extends AppCompatActivity {
                     Intent signup_Cust = new Intent(SelectLogin.this,CustomerRegister.class);
                     startActivity(signup_Cust);
                     finish();
-                }
+                }*/
             }
 
         });
 
-        Delivery.setOnClickListener(new View.OnClickListener() {
+       /* Delivery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (type.equals("Email")){
@@ -94,7 +99,7 @@ public class SelectLogin extends AppCompatActivity {
                     //finish();
                 }
             }
-        });
+        });*/
 
     }
 

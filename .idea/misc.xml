@@ -7,21 +7,39 @@
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/drawable/button1.xml" value="0.22" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/drawable/buttonblue.xml" value="0.22777777777777777" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/drawable/buttongreen.xml" value="0.22777777777777777" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/drawable/ic_baseline_home.xml" value="0.20104166666666667" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_chef_email_login.xml" value="0.271286231884058" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_chef_phone_login.xml" value="0.2734375" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_chef_register.xml" value="0.22" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_customer_email_login.xml" value="0.2734375" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_customer_phone_login.xml" value="0.2734375" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_customer_register.xml" value="0.271286231884058" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_customer_view.xml" value="0.2694746376811594" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_driver_email_login.xml" value="0.2734375" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_driver_phone_login.xml" value="0.2734375" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_driver_register.xml" value="0.271286231884058" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_main.xml" value="0.2359375" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_main_menu.xml" value="0.25" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_recycler_view_nav.xml" value="0.17083333333333334" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_select_login.xml" value="0.1875" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_selectt_login.xml" value="0.2734375" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_update_profile.xml" value="0.18489583333333334" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_user_profile.xml" value="0.2694746376811594" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/fragment_chef__orders.xml" value="0.2694746376811594" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/fragment_chef__post_dish.xml" value="0.2694746376811594" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/fragment_chef_home.xml" value="0.2694746376811594" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/fragment_chef_profile.xml" value="0.2694746376811594" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/fragment_cust__cart.xml" value="0.2653985507246377" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/fragment_cust__home.xml" value="0.2653985507246377" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/fragment_cust__profile.xml" value="0.2653985507246377" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/fragment_cust_orders.xml" value="0.2653985507246377" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/fragment_food__details.xml" value="0.22" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/fragment_home.xml" value="0.2694746376811594" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/singleitem.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/singlerowdesign.xml" value="0.2694746376811594" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/menu/bottom_menu.xml" value="0.18489583333333334" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/menu/bottom_nav_bar.xml" value="0.2734375" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/menu/cust_menu.xml" value="0.2734375" />
       </map>
     </option>
   </component>

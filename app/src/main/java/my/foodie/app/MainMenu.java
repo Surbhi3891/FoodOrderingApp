@@ -72,7 +72,7 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.signin_email:
-                Intent signinemail = new Intent(MainMenu.this,SelectLogin.class);
+                Intent signinemail = new Intent(MainMenu.this,ChefEmailLogin.class);
                 signinemail.putExtra("Home","Email");
                 startActivity(signinemail);
                 //finish();
