@@ -84,7 +84,7 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
                 //finish();
                 break;
             case R.id.signup:
-                Intent sign=new Intent(MainMenu.this,SelectLogin.class);
+                Intent sign=new Intent(MainMenu.this,ChefRegister.class);
                 sign.putExtra("Home","Signup");
                 startActivity(sign);
                //finish();

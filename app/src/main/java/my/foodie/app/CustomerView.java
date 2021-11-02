@@ -27,22 +27,22 @@ public class CustomerView extends AppCompatActivity {
 
                     case R.id.cust_Home:
                         t = new Cust_Home();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer_Cust,t).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,t).commit();
                         break;
 
                     case R.id.cust_Cart:
                         t=new Cust_Cart();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer_Cust,t).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,t).commit();
                         break;
 
                     case R.id.cust_orders:
                         t=new Cust_orders();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer_Cust,t).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,t).commit();
                         break;
 
                     case R.id.cust_Profile:
                         t=new Cust_Profile();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer_Cust,t).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,t).commit();
                         break;
 
                     case R.id.switchType:

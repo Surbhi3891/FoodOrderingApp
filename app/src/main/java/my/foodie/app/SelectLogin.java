@@ -36,6 +36,7 @@ public class SelectLogin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent loginemail_Chef = new Intent(SelectLogin.this,RecyclerViewNav.class);
+                loginemail_Chef.putExtra("LoginType","Chef");
                 startActivity(loginemail_Chef);
                 /*if (type.equals("Email")){
                     Intent loginemail_Chef = new Intent(SelectLogin.this,RecyclerViewNav.class);
@@ -60,13 +61,14 @@ public class SelectLogin extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent loginemail_Chef = new Intent(SelectLogin.this,CustomerView.class);
+                loginemail_Chef.putExtra("LoginType","Customer");
                 startActivity(loginemail_Chef);
                 /*if (type.equals("Email")){
                     Intent loginemail_Cust = new Intent(SelectLogin.this,CustomerEmailLogin.class);
                     startActivity(loginemail_Cust);
                     finish();
                 }
-                if (type.equals("Phone")){
+               if (type.equals("Phone")){
                     Intent loginphone_Cust = new Intent(SelectLogin.this,CustomerPhoneLogin.class);
                     startActivity(loginphone_Cust);
                     finish();

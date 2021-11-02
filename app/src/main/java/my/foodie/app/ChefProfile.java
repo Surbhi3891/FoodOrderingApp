@@ -21,12 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.zip.Inflater;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ChefProfile#newInstance} factory method to
- * create an instance of this fragment.
- *
- */
+
 public class ChefProfile extends Fragment {
     DatabaseReference dbRef ;
     TextView name, email, address, phone, usertype;

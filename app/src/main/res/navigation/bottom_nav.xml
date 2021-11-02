@@ -9,7 +9,7 @@
         android:id="@+id/chefHomeFragment"
         android:name="my.foodie.app.ChefHomeFragment"
         android:label="fragment_chef_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_chef_home" />
     <fragment
         android:id="@+id/chef_Orders"
         android:name="my.foodie.app.Chef_Orders"

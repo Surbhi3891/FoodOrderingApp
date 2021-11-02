@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,9 +26,10 @@ import java.util.ArrayList;
 public class ChefHomeFragment extends Fragment {
 
     RecyclerView recview;
-    DatabaseReference data;
+    DatabaseReference data,dbRef;
     Adap myadapter;
     ArrayList<model> food;
+    String ChefName;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -64,6 +67,47 @@ public class ChefHomeFragment extends Fragment {
 
        recview = root.findViewById(R.id.menulist);
        data = FirebaseDatabase.getInstance().getReference("FoodMenu");
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+//        dbRef= FirebaseDatabase.getInstance().getReference("Users");
+//        dbRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                User userProfile = snapshot.getValue(User.class);
+//                if (userProfile != null) {
+//
+//                    ChefName = userProfile.fname+ " " + userProfile.lname;
+//                    System.out.println("--------------------------------------------" + ChefName);
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+        System.out.println("--------------------------------------------" + ChefName);
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        String uid = user.getUid();
+//        dbRef= FirebaseDatabase.getInstance().getReference("Users");
+//        dbRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//           public void onDataChange(@NonNull DataSnapshot snapshot) {
+//               User userProfile = snapshot.getValue(User.class);
+//               if (userProfile != null) {
+//
+//                   ChefName = userProfile.fname+ " " + userProfile.lname;
+//               }
+//           }
+//
+//           @Override
+//           public void onCancelled(@NonNull DatabaseError error) {
+//
+//           }
+//       });
+
        recview.setHasFixedSize(true);
        recview.setLayoutManager(new LinearLayoutManager(getContext()));
        food = new ArrayList<>();
@@ -76,10 +120,15 @@ public class ChefHomeFragment extends Fragment {
 
                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
 
+                   //dbRef= FirebaseDatabase.getInstance().getReference("Users");
 
 
                    model md = dataSnapshot.getValue(model.class);
-                   food.add(md);
+                   if (md.getUserid().equals(uid)) {
+                       System.out.println("Chef name from the adapter----------------------------------- " + md.getUserid());
+                       //System.out.println("Chef name ---------------------------------------------"+ ChefName);
+                       food.add(md);
+                   }
                }
                myadapter.notifyDataSetChanged();
 

@@ -9,6 +9,15 @@ public class model {
     String foodCal;
     String ChefName;
     String foodPrice;
+    String userid;
+
+    public String getUserid() {
+        return userid;
+    }
+
+
+
+
 
     public String getFoodCal() {
         return foodCal;
