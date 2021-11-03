@@ -10,6 +10,11 @@ public class model {
     String ChefName;
     String foodPrice;
     String userid;
+    String itemID;
+
+    public String getItemID() {
+        return itemID;
+    }
 
     public String getUserid() {
         return userid;

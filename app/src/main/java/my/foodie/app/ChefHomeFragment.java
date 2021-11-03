@@ -26,10 +26,9 @@ import java.util.ArrayList;
 public class ChefHomeFragment extends Fragment {
 
     RecyclerView recview;
-    DatabaseReference data,dbRef;
+    DatabaseReference data;
     Adap myadapter;
     ArrayList<model> food;
-    String ChefName;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -70,43 +69,7 @@ public class ChefHomeFragment extends Fragment {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
-//        dbRef= FirebaseDatabase.getInstance().getReference("Users");
-//        dbRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                User userProfile = snapshot.getValue(User.class);
-//                if (userProfile != null) {
-//
-//                    ChefName = userProfile.fname+ " " + userProfile.lname;
-//                    System.out.println("--------------------------------------------" + ChefName);
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-        System.out.println("--------------------------------------------" + ChefName);
-//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//        String uid = user.getUid();
-//        dbRef= FirebaseDatabase.getInstance().getReference("Users");
-//        dbRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//           public void onDataChange(@NonNull DataSnapshot snapshot) {
-//               User userProfile = snapshot.getValue(User.class);
-//               if (userProfile != null) {
-//
-//                   ChefName = userProfile.fname+ " " + userProfile.lname;
-//               }
-//           }
-//
-//           @Override
-//           public void onCancelled(@NonNull DatabaseError error) {
-//
-//           }
-//       });
+
 
        recview.setHasFixedSize(true);
        recview.setLayoutManager(new LinearLayoutManager(getContext()));

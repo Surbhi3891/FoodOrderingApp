@@ -1,15 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Cust_Cart">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/modeofdelivery"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="cart Customer"
-        android:textSize="40sp"/>/>
+        android:layout_height="50dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
 
-</FrameLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pick-up"
+            android:textColor="@color/Red" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deliver"
+            android:textColor="@color/Red" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/modeofdelivery"
+        android:layout_above="@+id/subtotalLL"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/itemList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/modeofdelivery"
+            android:layout_marginBottom="5dp"
+            android:text="Items"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cartlist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/itemList"
+            android:gravity="center" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/subtotalLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/taxLL"
+        android:orientation="horizontal">
+
+        <TextView
+            android:paddingLeft="5dp"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Subtotal"
+            android:textColor="@color/black"></TextView>
+
+        <TextView
+            android:id="@+id/TotalAmount"
+           android:gravity="end"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Subtotal"
+            android:textColor="@color/black"></TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ContinueBtn"
+        android:id="@+id/taxLL"
+        android:orientation="horizontal">
+
+        <TextView
+            android:paddingLeft="5dp"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Estimated Tax"
+            android:textColor="@color/black"></TextView>
+
+        <TextView
+            android:id="@+id/Tax"
+            android:gravity="end"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Subtotal"
+            android:textColor="@color/black"></TextView>
+    </LinearLayout>
+    <Button
+        android:id="@+id/ContinueBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttonred"
+        android:text="Continue"
+        android:layout_marginBottom="7dp"
+        android:textColor="@color/white"
+        android:layout_alignParentBottom="true"/>
+
+
+</RelativeLayout>

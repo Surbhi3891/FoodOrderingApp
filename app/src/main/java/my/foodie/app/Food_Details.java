@@ -47,7 +47,7 @@ public class Food_Details extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    String fooditem,Desc,ingd,img,price,cal,chefname;
+    String fooditem,Desc,ingd,img,price,cal,chefname,itemID;
     ImageView Fd_Img;
     TextView Fd_name , Fd_desc, Fd_ing, Fd_price, Fd_cal, Fd_chef ;
     Button Fd_Delete;
@@ -58,7 +58,7 @@ public class Food_Details extends Fragment {
     public Food_Details() {
 
     }
-    public Food_Details(String fooditem,String Desc, String ingd,String img,String price,String cal,String chefname) {
+    public Food_Details(String fooditem,String Desc, String ingd,String img,String price,String cal,String chefname, String itemID) {
 
         this.fooditem = fooditem;
         this.Desc = Desc;
@@ -67,6 +67,7 @@ public class Food_Details extends Fragment {
         this.price=price;
         this.cal = cal;
         this.chefname=chefname;
+        this.itemID=itemID;
 
 
     }
@@ -144,7 +145,7 @@ public class Food_Details extends Fragment {
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        FirebaseDatabase.getInstance().getReference("FoodMenu").child(fooditem).removeValue();
+                        FirebaseDatabase.getInstance().getReference("FoodMenu").child(itemID).removeValue();
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new ChefHomeFragment()).addToBackStack(null).commit();
 
                     }
@@ -194,7 +195,7 @@ public class Food_Details extends Fragment {
         cartMap.put("date",saveCurrentDate);
         cartMap.put("time",saveCurrTime);
 
-        CartItem cartitem = new CartItem(fooditem,price, chefname,itemCount.getNumber(),saveCurrentDate,saveCurrTime);
+        CartItem cartitem = new CartItem(fooditem,price, chefname,itemCount.getNumber(),saveCurrentDate,saveCurrTime,itemID);
 
         //cartListRef.child(userEmail).child("Products").child(fooditem).setValue(cartMap)
         FirebaseDatabase.getInstance().getReference("Cart List").child(userid).child(fooditem).setValue(cartitem).addOnCompleteListener(new OnCompleteListener<Void>() {
