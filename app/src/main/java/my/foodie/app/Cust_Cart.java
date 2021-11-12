@@ -1,15 +1,21 @@
 package my.foodie.app;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,6 +35,10 @@ public class Cust_Cart extends Fragment {
     DatabaseReference data;
     cartAdap cartadapter;
     ArrayList<CartModel> cart;
+    int TotalAmount;
+    TextView total;
+    TextView tax;
+    int TotalBill;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -75,15 +85,23 @@ public class Cust_Cart extends Fragment {
         cart = new ArrayList<>();
         cartadapter = new cartAdap(getContext(),cart);
         recview_cart.setAdapter(cartadapter);
+        total = V.findViewById(R.id.TotalAmount);
+        tax = V.findViewById(R.id.Tax);
 
         data.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 for(DataSnapshot datasnapshot : snapshot.getChildren()){
 
                     CartModel cmd = datasnapshot.getValue(CartModel.class);
                     cart.add(cmd);
+                    TotalBill = TotalBill + Integer.valueOf(cmd.getPrice())*Integer.valueOf(cmd.getQuantity());
+                    total.setText(String.valueOf(TotalBill) + "$");
+                    float taxest = (float) (0.0625*TotalBill);
+                    tax.setText(String.valueOf(taxest)+ "$");
                 }
+
                 cartadapter.notifyDataSetChanged();
 
             }
@@ -93,6 +111,9 @@ public class Cust_Cart extends Fragment {
 
             }
         });
+
         return V;
     }
+
+
 }

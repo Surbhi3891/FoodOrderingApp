@@ -54,22 +54,22 @@
             android:inputType="text"/>
 
         <EditText
+            android:id="@+id/calories"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:hint="Calories per serving"
             android:layout_marginBottom="10dp"
             android:gravity="center"
-            android:id="@+id/calories"
-            android:inputType="text"/>
+            android:hint="Calories per serving"
+            android:inputType="number" />
 
         <EditText
+            android:id="@+id/price"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:hint="Price"
             android:layout_marginBottom="10dp"
             android:gravity="center"
-            android:id="@+id/price"
-            android:inputType="text"/>
+            android:hint="Price"
+            android:inputType="number" />
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

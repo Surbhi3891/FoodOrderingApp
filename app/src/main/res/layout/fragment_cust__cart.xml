@@ -73,10 +73,9 @@
 
         <TextView
             android:id="@+id/TotalAmount"
-           android:gravity="end"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Subtotal"
+            android:gravity="end"
             android:textColor="@color/black"></TextView>
     </LinearLayout>
     <LinearLayout

@@ -1,6 +1,7 @@
 package my.foodie.app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
@@ -22,6 +24,7 @@ public class cartAdap extends RecyclerView.Adapter<cartAdap.cartViewholder> {
 
     Context contextCart;
     ArrayList<CartModel> cartList;
+    //int Subtotal = 0;
 
     public cartAdap(Context contextCart, ArrayList<CartModel> cartList) {
         this.contextCart = contextCart;
@@ -42,6 +45,21 @@ public class cartAdap extends RecyclerView.Adapter<cartAdap.cartViewholder> {
            holder.foodName.setText(c.getFoodName());
            holder.price.setText(c.getPrice());
            holder.quantity.setNumber(c.getQuantity());
+
+          // int oneItemTotalPrice = (Integer.valueOf(c.getPrice()))* (Integer.valueOf(c.getQuantity()));
+          // Subtotal = Subtotal + oneItemTotalPrice;
+          // Intent intent = new Intent("MyTotalAmount");
+           //intent.putExtra("Subtotal",Subtotal);
+
+       // LocalBroadcastManager.getInstance(contextCart).sendBroadcast(intent);
+
+//           holder.quantity.setOnClickListener(new View.OnClickListener() {
+//               @Override
+//               public void onClick(View v) {
+//                   String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//                   FirebaseDatabase.getInstance().getReference("Cart List").child(uid).child(c.getFoodName()).child("quantity").setValue(c.getQuantity());
+//               }
+//           });
 
            holder.deleteitem.setOnClickListener(new View.OnClickListener() {
                @Override

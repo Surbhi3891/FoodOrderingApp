@@ -27,14 +27,18 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class Food_Details extends Fragment {
@@ -47,18 +51,21 @@ public class Food_Details extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    String fooditem,Desc,ingd,img,price,cal,chefname,itemID;
+    String fooditem,Desc,ingd,img,price,cal,chefname,itemID,userid;
     ImageView Fd_Img;
     TextView Fd_name , Fd_desc, Fd_ing, Fd_price, Fd_cal, Fd_chef ;
     Button Fd_Delete;
     Button Fd_AddtoCart ;
     ElegantNumberButton itemCount ;
     Button AddtoCart ;
+    int Count =0;
+    boolean isvalid = false;
+
 
     public Food_Details() {
 
     }
-    public Food_Details(String fooditem,String Desc, String ingd,String img,String price,String cal,String chefname, String itemID) {
+    public Food_Details(String fooditem,String Desc, String ingd,String img,String price,String cal,String chefname, String itemID,String userid) {
 
         this.fooditem = fooditem;
         this.Desc = Desc;
@@ -68,6 +75,8 @@ public class Food_Details extends Fragment {
         this.cal = cal;
         this.chefname=chefname;
         this.itemID=itemID;
+        //userid is the chefid for selected
+        this.userid = userid;
 
 
     }
@@ -128,11 +137,15 @@ public class Food_Details extends Fragment {
             itemCount.setVisibility(View.INVISIBLE);
 
         }
-
+         cartexists();
         AddtoCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(cartexists() == false){
                 addingTocartList();
+                }else{
+                    Toast.makeText(getContext(), "Cart full", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -177,33 +190,25 @@ public class Food_Details extends Fragment {
 
         Calendar caldate = Calendar.getInstance();
 
-            SimpleDateFormat currDate = new SimpleDateFormat("MM dd, yyyy");
-            saveCurrentDate = currDate.format(caldate.getTime());
-            SimpleDateFormat currTime = new SimpleDateFormat("HH:mm:ss a");
-            saveCurrTime = currTime.format(caldate.getTime());
+        SimpleDateFormat currDate = new SimpleDateFormat("MM dd, yyyy");
+        saveCurrentDate = currDate.format(caldate.getTime());
+        SimpleDateFormat currTime = new SimpleDateFormat("HH:mm:ss a");
+        saveCurrTime = currTime.format(caldate.getTime());
 
         //DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference("Cart List");
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String userid = user.getUid();
+        String id = user.getUid();
 
 
-        final HashMap<String, Object> cartMap = new HashMap<>();
-        cartMap.put("FoodItem", Fd_name.getText().toString().trim());
-        cartMap.put("Price",Fd_price.getText().toString().trim());
-        cartMap.put("ChefName",Fd_chef.getText().toString().trim());
-        cartMap.put("Quantity",itemCount.getNumber());
-        cartMap.put("date",saveCurrentDate);
-        cartMap.put("time",saveCurrTime);
+        CartItem cartitem = new CartItem(fooditem, price, chefname, itemCount.getNumber(), saveCurrentDate, saveCurrTime, itemID);
 
-        CartItem cartitem = new CartItem(fooditem,price, chefname,itemCount.getNumber(),saveCurrentDate,saveCurrTime,itemID);
-
-        //cartListRef.child(userEmail).child("Products").child(fooditem).setValue(cartMap)
-        FirebaseDatabase.getInstance().getReference("Cart List").child(userid).child(fooditem).setValue(cartitem).addOnCompleteListener(new OnCompleteListener<Void>() {
+        FirebaseDatabase.getInstance().getReference("Cart List").child(id).child(fooditem).setValue(cartitem).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
 
-                    Toast.makeText(getContext(),"Item added to the cart",Toast.LENGTH_LONG).show();
+
+                    Toast.makeText(getContext(), "Item added to the cart", Toast.LENGTH_LONG).show();
 
                     //AppCompatActivity activity = (AppCompatActivity)getContext();
                     //activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new Cust_Home()).addToBackStack(null).commit();
@@ -215,6 +220,31 @@ public class Food_Details extends Fragment {
 
 
 
+
+    }
+
+    public boolean cartexists(){
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String id = user.getUid();
+        FirebaseDatabase.getInstance().getReference("Cart List").child(id).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                snapshot.getValue();
+                if(snapshot.exists()){
+                   isvalid = true;
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+       return isvalid;
 
     }
 
