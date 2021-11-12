@@ -46,20 +46,8 @@ public class cartAdap extends RecyclerView.Adapter<cartAdap.cartViewholder> {
            holder.price.setText(c.getPrice());
            holder.quantity.setNumber(c.getQuantity());
 
-          // int oneItemTotalPrice = (Integer.valueOf(c.getPrice()))* (Integer.valueOf(c.getQuantity()));
-          // Subtotal = Subtotal + oneItemTotalPrice;
-          // Intent intent = new Intent("MyTotalAmount");
-           //intent.putExtra("Subtotal",Subtotal);
 
-       // LocalBroadcastManager.getInstance(contextCart).sendBroadcast(intent);
 
-//           holder.quantity.setOnClickListener(new View.OnClickListener() {
-//               @Override
-//               public void onClick(View v) {
-//                   String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-//                   FirebaseDatabase.getInstance().getReference("Cart List").child(uid).child(c.getFoodName()).child("quantity").setValue(c.getQuantity());
-//               }
-//           });
 
            holder.deleteitem.setOnClickListener(new View.OnClickListener() {
                @Override

@@ -59,13 +59,15 @@ public class Food_Details extends Fragment {
     ElegantNumberButton itemCount ;
     Button AddtoCart ;
     int Count =0;
+    String itemkey;
     boolean isvalid = false;
+    String ChefID;
 
 
     public Food_Details() {
 
     }
-    public Food_Details(String fooditem,String Desc, String ingd,String img,String price,String cal,String chefname, String itemID,String userid) {
+    public Food_Details(String fooditem,String Desc, String ingd,String img,String price,String cal,String chefname, String itemID) {
 
         this.fooditem = fooditem;
         this.Desc = Desc;
@@ -75,8 +77,8 @@ public class Food_Details extends Fragment {
         this.cal = cal;
         this.chefname=chefname;
         this.itemID=itemID;
-        //userid is the chefid for selected
-        this.userid = userid;
+
+
 
 
     }
@@ -138,13 +140,24 @@ public class Food_Details extends Fragment {
 
         }
          cartexists();
+
         AddtoCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(cartexists() == false){
-                addingTocartList();
+//                if(cartexists() == false){
+//                addingTocartList();
+//                }else{
+//                    Toast.makeText(getContext(), "Cart full", Toast.LENGTH_LONG).show();
+//                }
+
+                if(Count==0){
+                    addingTocartList();
                 }else{
-                    Toast.makeText(getContext(), "Cart full", Toast.LENGTH_LONG).show();
+                    if(ChefID.equals(chefname)){
+                        addingTocartList();
+                    }else {
+                        Toast.makeText(getContext(), "Items prepared by one chef only can be ordered at a time.", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });
@@ -195,7 +208,6 @@ public class Food_Details extends Fragment {
         SimpleDateFormat currTime = new SimpleDateFormat("HH:mm:ss a");
         saveCurrTime = currTime.format(caldate.getTime());
 
-        //DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference("Cart List");
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String id = user.getUid();
 
@@ -227,14 +239,18 @@ public class Food_Details extends Fragment {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String id = user.getUid();
+
         FirebaseDatabase.getInstance().getReference("Cart List").child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                snapshot.getValue();
-                if(snapshot.exists()){
-                   isvalid = true;
+
+                Count = (int) snapshot.getChildrenCount();
+                for(DataSnapshot ds :snapshot.getChildren()) {
+
+                    ChefID = ds.child("chefName").getValue().toString();
 
                 }
+
             }
 
             @Override
@@ -242,6 +258,8 @@ public class Food_Details extends Fragment {
 
             }
         });
+
+
 
 
        return isvalid;
