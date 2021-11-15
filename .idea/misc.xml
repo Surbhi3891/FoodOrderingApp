@@ -11,6 +11,7 @@
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_chef_email_login.xml" value="0.271286231884058" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_chef_phone_login.xml" value="0.2734375" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_chef_register.xml" value="0.22" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_confirm_details.xml" value="0.22" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_customer_email_login.xml" value="0.2734375" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_customer_phone_login.xml" value="0.2734375" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_customer_register.xml" value="0.271286231884058" />
@@ -20,6 +21,7 @@
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_driver_register.xml" value="0.271286231884058" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_main.xml" value="0.2359375" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_main_menu.xml" value="0.25" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_payment.xml" value="0.12552083333333333" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_recycler_view_nav.xml" value="0.17083333333333334" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_select_login.xml" value="0.1875" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/activity_selectt_login.xml" value="0.2734375" />

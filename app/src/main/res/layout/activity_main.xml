@@ -26,7 +26,7 @@
         android:layout_width="217dp"
         android:layout_height="30dp"
         android:fontFamily="monospace"
-        android:text="Food Delivery App"
+        android:text="homEat"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/Black"

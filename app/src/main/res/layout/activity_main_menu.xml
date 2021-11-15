@@ -37,7 +37,7 @@
             android:layout_height="66dp"
             android:fontFamily="@font/aclonica"
             android:gravity="center"
-            android:text="My Food App"
+            android:text="homEat"
             android:textColor="#E61C1C"
             android:textSize="34sp"
             android:textStyle="bold" />

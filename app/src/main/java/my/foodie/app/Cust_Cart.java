@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,6 +39,7 @@ public class Cust_Cart extends Fragment {
     int TotalAmount;
     TextView total;
     TextView tax;
+    Button continueBtn;
     int TotalBill;
 
     private static final String ARG_PARAM1 = "param1";
@@ -87,6 +89,15 @@ public class Cust_Cart extends Fragment {
         recview_cart.setAdapter(cartadapter);
         total = V.findViewById(R.id.TotalAmount);
         tax = V.findViewById(R.id.Tax);
+        continueBtn = V.findViewById(R.id.ContinueBtn);
+
+        continueBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),ConfirmDetails.class));
+            }
+        });
+
 
         data.addValueEventListener(new ValueEventListener() {
             @Override
