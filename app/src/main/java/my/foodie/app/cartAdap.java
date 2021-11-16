@@ -49,6 +49,7 @@ public class cartAdap extends RecyclerView.Adapter<cartAdap.cartViewholder> {
 
 
 
+
            holder.deleteitem.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {

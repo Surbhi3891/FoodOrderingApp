@@ -15,6 +15,14 @@
         android:text="Paypal Payment"
         android:gravity="center"
         android:layout_marginTop="50dp"/>
+    <Button
+        android:id="@+id/cashpay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="pay by cash"
+        android:background="@drawable/buttonred"
+        android:textColor="@color/white"
+        android:textSize="23sp"/>
 
     <com.paypal.checkout.paymentbutton.PayPalButton
         android:id="@+id/payPalButton"

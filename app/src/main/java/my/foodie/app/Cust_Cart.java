@@ -40,7 +40,7 @@ public class Cust_Cart extends Fragment {
     TextView total;
     TextView tax;
     Button continueBtn;
-    int TotalBill;
+    public static int TotalBill = 0;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -102,15 +102,17 @@ public class Cust_Cart extends Fragment {
         data.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                TotalBill = 0;
 
                 for(DataSnapshot datasnapshot : snapshot.getChildren()){
 
                     CartModel cmd = datasnapshot.getValue(CartModel.class);
                     cart.add(cmd);
-                    TotalBill = TotalBill + Integer.valueOf(cmd.getPrice())*Integer.valueOf(cmd.getQuantity());
-                    total.setText(String.valueOf(TotalBill) + "$");
-                    float taxest = (float) (0.0625*TotalBill);
-                    tax.setText(String.valueOf(taxest)+ "$");
+
+                        TotalBill = TotalBill+ (Integer.valueOf(cmd.getPrice()) * Integer.valueOf(cmd.getQuantity()));
+                        float taxest = (float) (0.0625 * TotalBill);
+                        total.setText(String.valueOf(TotalBill) + "$");
+                        tax.setText(String.valueOf(taxest) + "$");
                 }
 
                 cartadapter.notifyDataSetChanged();
