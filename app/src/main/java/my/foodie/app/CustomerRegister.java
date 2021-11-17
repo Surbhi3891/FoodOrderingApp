@@ -125,7 +125,7 @@ public class CustomerRegister extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<Void> task) {
 
 
-                                        User user = new User(fname, lname, email, pwd, cpwd, phone, address, city, state, zip, login_type);
+                                        User user = new User(fname, lname, email, phone, address, city, state, zip, login_type);
                                         System.out.println(" 333");
                                         FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override

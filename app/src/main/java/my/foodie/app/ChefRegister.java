@@ -161,7 +161,8 @@ public class ChefRegister extends AppCompatActivity {
 
                                if (task.isSuccessful()) {
 
-                                   User user = new User(fname, lname, email, pwd, cpwd, phone, address, city, state, zip, login_type);
+                                   //User user = new User(fname, lname, email, pwd, cpwd, phone, address, city, state, zip, login_type);
+                                   User user = new User(fname, lname, email, phone, address, city, state, zip, login_type);
                                    System.out.println(" 333");
                                    FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                        @Override

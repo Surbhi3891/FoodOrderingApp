@@ -10,6 +10,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,6 +26,7 @@ public class ChefEmailLogin extends AppCompatActivity {
     TextInputLayout Password;
     Button Signin;
     String email, pwd;
+    TextView forgot_pwd;
 
     FirebaseAuth fbAuth;
 
@@ -37,7 +39,15 @@ public class ChefEmailLogin extends AppCompatActivity {
         Email = findViewById(R.id.email_login);
         Password = findViewById(R.id.e_password);
         Signin = findViewById(R.id.Email_Btn);
+        forgot_pwd= findViewById(R.id.forgot_pwd);
         fbAuth = FirebaseAuth.getInstance();
+        forgot_pwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ChefEmailLogin.this,forgotPassword.class));
+                
+            }
+        });
 
         Signin.setOnClickListener(new View.OnClickListener() {
             @Override
