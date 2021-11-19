@@ -36,7 +36,7 @@ import com.hbb20.CountryCodePicker;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ChefRegister extends AppCompatActivity {
+public class UserRegisteration extends AppCompatActivity {
 
     TextInputLayout Fname, Lname, Email, Password, Cpassword, Phone,Address, City, Zip;
     Spinner State;
@@ -111,7 +111,7 @@ public class ChefRegister extends AppCompatActivity {
         dbRef = firebaseDB.getInstance().getReference("States");
 
         spinnerDataList = new ArrayList<>();
-        adapter = new ArrayAdapter<String>(ChefRegister.this, android.R.layout.simple_spinner_dropdown_item,spinnerDataList);
+        adapter = new ArrayAdapter<String>(UserRegisteration.this, android.R.layout.simple_spinner_dropdown_item,spinnerDataList);
         State.setAdapter(adapter);
         retrieveStates(dbRef);
 
@@ -147,7 +147,7 @@ public class ChefRegister extends AppCompatActivity {
 
 
                 if (isValid()) {
-                    final ProgressDialog message = new ProgressDialog(ChefRegister.this);
+                    final ProgressDialog message = new ProgressDialog(UserRegisteration.this);
                    message.setCancelable(false);
                    message.setCanceledOnTouchOutside(false);
                    message.setMessage("Please wait....");
@@ -176,14 +176,14 @@ public class ChefRegister extends AppCompatActivity {
                                                    public void onComplete(@NonNull Task<Void> task) {
                                                        if (task.isSuccessful()) {
                                                            message.dismiss();
-                                                           AlertDialog.Builder builder = new AlertDialog.Builder(ChefRegister.this);
+                                                           AlertDialog.Builder builder = new AlertDialog.Builder(UserRegisteration.this);
                                                            builder.setMessage(" Registration Succesful. Please verify your email id.");
                                                            builder.setCancelable(false);
                                                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                                                @Override
                                                                public void onClick(DialogInterface dialogInterface, int i) {
                                                                    dialogInterface.dismiss();
-                                                                   Intent chef_Login = new Intent(ChefRegister.this,EmailLogin.class);
+                                                                   Intent chef_Login = new Intent(UserRegisteration.this,EmailLogin.class);
                                                                    startActivity(chef_Login);
                                                                }
                                                            });
@@ -209,7 +209,7 @@ public class ChefRegister extends AppCompatActivity {
                                else{
                                    message.dismiss();
 
-                                   Toast.makeText(ChefRegister.this, "User already exists..", Toast.LENGTH_LONG).show();
+                                   Toast.makeText(UserRegisteration.this, "User already exists..", Toast.LENGTH_LONG).show();
                                    System.out.println("task third" + task.isSuccessful());
                                    System.out.println(" Unsuccessful");
                                }
