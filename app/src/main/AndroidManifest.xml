@@ -43,37 +43,19 @@
             android:name=".UserProfile"
             android:exported="true" />
         <activity
-            android:name=".DriverRegister"
-            android:exported="true" />
-        <activity
-            android:name=".DriverPhoneLogin"
-            android:exported="true" />
-        <activity
-            android:name=".DriverEmailLogin"
-            android:exported="true" />
-        <activity
-            android:name=".CustomerRegister"
-            android:exported="true" />
-        <activity
-            android:name=".CustomerPhoneLogin"
-            android:exported="true" />
-        <activity
-            android:name=".CustomerEmailLogin"
-            android:exported="true" />
-        <activity
             android:name=".ChefRegister"
             android:exported="true" />
         <activity
             android:name=".ChefPhoneLogin"
             android:exported="true" />
         <activity
-            android:name=".ChefEmailLogin"
+            android:name=".EmailLogin"
             android:exported="true"
             android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".SelectLogin"
             android:exported="true"
-            android:parentActivityName=".ChefEmailLogin" />
+            android:parentActivityName=".EmailLogin" />
         <activity
             android:name=".MainMenu"
             android:exported="true" />

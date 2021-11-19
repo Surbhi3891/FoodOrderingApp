@@ -96,7 +96,7 @@ public class Cust_Profile extends Fragment {
             public void onClick(View v) {
                 //finish();
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getActivity(),ChefEmailLogin.class));
+                startActivity(new Intent(getActivity(),EmailLogin.class));
                 getActivity().finish();
             }
         });

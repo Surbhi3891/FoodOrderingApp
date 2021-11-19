@@ -62,7 +62,7 @@ public class forgotPassword extends AppCompatActivity {
 
                     Toast.makeText(forgotPassword.this,"Check your email to reset your password",Toast.LENGTH_LONG).show();
 
-                    startActivity(new Intent(forgotPassword.this,ChefEmailLogin.class));
+                    startActivity(new Intent(forgotPassword.this,EmailLogin.class));
                 }else{
 
                     Toast.makeText(forgotPassword.this,"Try Again! Something went wrong",Toast.LENGTH_LONG).show();

@@ -46,7 +46,7 @@ public class UserProfile extends AppCompatActivity {
             public void onClick(View v) {
                 finish();
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(UserProfile.this,ChefEmailLogin.class));
+                startActivity(new Intent(UserProfile.this,EmailLogin.class));
             }
         });
 

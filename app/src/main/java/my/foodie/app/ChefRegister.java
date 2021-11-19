@@ -183,7 +183,7 @@ public class ChefRegister extends AppCompatActivity {
                                                                @Override
                                                                public void onClick(DialogInterface dialogInterface, int i) {
                                                                    dialogInterface.dismiss();
-                                                                   Intent chef_Login = new Intent(ChefRegister.this,ChefEmailLogin.class);
+                                                                   Intent chef_Login = new Intent(ChefRegister.this,EmailLogin.class);
                                                                    startActivity(chef_Login);
                                                                }
                                                            });

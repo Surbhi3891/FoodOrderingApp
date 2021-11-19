@@ -20,7 +20,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class ChefEmailLogin extends AppCompatActivity {
+public class EmailLogin extends AppCompatActivity {
 
     TextInputLayout Email;
     TextInputLayout Password;
@@ -44,7 +44,7 @@ public class ChefEmailLogin extends AppCompatActivity {
         forgot_pwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ChefEmailLogin.this,forgotPassword.class));
+                startActivity(new Intent(EmailLogin.this,forgotPassword.class));
                 
             }
         });
@@ -80,7 +80,7 @@ public class ChefEmailLogin extends AppCompatActivity {
                     Password.requestFocus();
                     return;
                 }
-                final ProgressDialog message = new ProgressDialog(ChefEmailLogin.this);
+                final ProgressDialog message = new ProgressDialog(EmailLogin.this);
                 message.setCancelable(false);
                 message.setCanceledOnTouchOutside(false);
                 message.setMessage("Please wait....");
@@ -92,19 +92,19 @@ public class ChefEmailLogin extends AppCompatActivity {
                             message.dismiss();
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             if(user.isEmailVerified()){
-                                startActivity(new Intent(ChefEmailLogin.this,SelectLogin.class));
+                                startActivity(new Intent(EmailLogin.this,SelectLogin.class));
                                 finish();
                             }else {
 
                                 message.dismiss();
                                 user.sendEmailVerification();
-                                Toast.makeText(ChefEmailLogin.this,"Check your email to verify your account..",Toast.LENGTH_LONG).show();
+                                Toast.makeText(EmailLogin.this,"Check your email to verify your account..",Toast.LENGTH_LONG).show();
                             }
 
 
                         }else{
                             message.dismiss();
-                            Toast.makeText(ChefEmailLogin.this,"Login Failed. Check your credentials and Try again..",Toast.LENGTH_LONG).show();
+                            Toast.makeText(EmailLogin.this,"Login Failed. Check your credentials and Try again..",Toast.LENGTH_LONG).show();
                         }
 
                     }
