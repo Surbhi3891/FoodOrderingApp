@@ -83,7 +83,7 @@ public class ConfirmDetails extends AppCompatActivity {
                 cnfCity = city.getText().toString().trim();
                 cnfZip = zip.getText().toString().trim();
                 startActivity(new Intent( ConfirmDetails.this,Payment.class));
-                finish();
+                //finish();
             }
         });
 

@@ -94,6 +94,7 @@ public class ChefProfile extends Fragment {
                 //finish();
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getActivity(),ChefEmailLogin.class));
+                getActivity().finish();
             }
         });
 

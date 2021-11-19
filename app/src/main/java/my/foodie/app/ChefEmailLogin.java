@@ -93,6 +93,7 @@ public class ChefEmailLogin extends AppCompatActivity {
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             if(user.isEmailVerified()){
                                 startActivity(new Intent(ChefEmailLogin.this,SelectLogin.class));
+                                finish();
                             }else {
 
                                 message.dismiss();

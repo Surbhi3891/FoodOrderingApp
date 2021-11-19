@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="my.foodie.app">
 
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -15,6 +17,9 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:theme">
         <activity
+            android:name=".VerifyOTP"
+            android:exported="true" />
+        <activity
             android:name=".forgotPassword"
             android:exported="true" />
         <activity
@@ -25,10 +30,12 @@
             android:exported="true" />
         <activity
             android:name=".CustomerView"
-            android:exported="true" />
+            android:exported="true"
+            />
         <activity
             android:name=".RecyclerViewNav"
-            android:exported="true" />
+            android:exported="true"
+          />
         <activity
             android:name=".Update_Profile"
             android:exported="true" />
@@ -61,7 +68,8 @@
             android:exported="true" />
         <activity
             android:name=".ChefEmailLogin"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".SelectLogin"
             android:exported="true"
@@ -81,7 +89,7 @@
 
         <meta-data
             android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+            android:resource="@array/preloaded_fonts" /> <!-- register -->
     </application>
 
 </manifest>

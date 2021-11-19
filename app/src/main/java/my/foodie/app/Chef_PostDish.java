@@ -66,7 +66,7 @@ public class Chef_PostDish extends Fragment {
     FirebaseStorage storage;
     StorageReference storageref,ref;
     String userID,rand;
-    String chefName, state,city,fooditem,desc, ingredient,calories, price,itemID,lname;
+    String chefName, state,city,fooditem,desc, ingredient,calories, price,itemID,lname,ChefphoneNumber;
 
 
 
@@ -146,6 +146,7 @@ public class Chef_PostDish extends Fragment {
                 city = data.city;
                 chefName = data.fname + " " +data.lname;
                 lname = data.lname;
+                ChefphoneNumber = data.phone;
 
 
             }
@@ -170,6 +171,7 @@ public class Chef_PostDish extends Fragment {
              //if(isValid()){
 
                  uploadData();
+                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new ChefHomeFragment()).addToBackStack(null).commit();
              //}
 
          }
@@ -197,7 +199,7 @@ public class Chef_PostDish extends Fragment {
 
                 if(task.isSuccessful()){
                    Uri downloadUri = task.getResult();
-                    FoodMenu menuitem = new FoodMenu(chefName,fooditem,ingredient,desc,calories,price,String.valueOf(downloadUri),rand,userID,itemID);
+                    FoodMenu menuitem = new FoodMenu(chefName,fooditem,ingredient,desc,calories,price,String.valueOf(downloadUri),rand,userID,itemID,ChefphoneNumber);
                     FirebaseDatabase.getInstance().getReference("FoodMenu").child(itemID).setValue(menuitem).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -228,7 +230,7 @@ public class Chef_PostDish extends Fragment {
                     ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-                            FoodMenu menuitem = new FoodMenu(chefName,fooditem,ingredient,desc,calories,price,String.valueOf(uri),rand,userID,itemID);
+                            FoodMenu menuitem = new FoodMenu(chefName,fooditem,ingredient,desc,calories,price,String.valueOf(uri),rand,userID,itemID,ChefphoneNumber);
                             FirebaseDatabase.getInstance().getReference("FoodMenu").child(state).child(city).child(userID).setValue(menuitem).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {

@@ -51,7 +51,7 @@ public class Food_Details extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    String fooditem,Desc,ingd,img,price,cal,chefname,itemID,userid;
+    String fooditem,Desc,ingd,img,price,cal,chefname,itemID,userid,chefPhoneNumber;
     ImageView Fd_Img;
     TextView Fd_name , Fd_desc, Fd_ing, Fd_price, Fd_cal, Fd_chef ;
     Button Fd_Delete;
@@ -67,7 +67,7 @@ public class Food_Details extends Fragment {
     public Food_Details() {
 
     }
-    public Food_Details(String fooditem,String Desc, String ingd,String img,String price,String cal,String chefname, String itemID) {
+    public Food_Details(String fooditem,String Desc, String ingd,String img,String price,String cal,String chefname, String itemID,String userid,String chefPhoneNumber) {
 
         this.fooditem = fooditem;
         this.Desc = Desc;
@@ -77,11 +77,16 @@ public class Food_Details extends Fragment {
         this.cal = cal;
         this.chefname=chefname;
         this.itemID=itemID;
+        this.userid=userid;
+        this.chefPhoneNumber=chefPhoneNumber;
 
 
 
 
     }
+
+//    public Food_Details(String foodItem, String foodDesc, String foodIngredients, String image, String foodPrice, String foodCal, String chefName, String itemID, String userid) {
+//    }
 
 
     public static Food_Details newInstance(String param1, String param2) {
@@ -212,9 +217,9 @@ public class Food_Details extends Fragment {
         String id = user.getUid();
 
 
-        CartItem cartitem = new CartItem(fooditem, price, chefname, itemCount.getNumber(), saveCurrentDate, saveCurrTime, itemID);
+        CartItem cartitem = new CartItem(fooditem, price, chefname, itemCount.getNumber(), saveCurrentDate, saveCurrTime, itemID, userid,chefPhoneNumber);
 
-        FirebaseDatabase.getInstance().getReference("Cart List").child(id).child(fooditem).setValue(cartitem).addOnCompleteListener(new OnCompleteListener<Void>() {
+        FirebaseDatabase.getInstance().getReference("Cart List").child(id).child(itemID).setValue(cartitem).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {

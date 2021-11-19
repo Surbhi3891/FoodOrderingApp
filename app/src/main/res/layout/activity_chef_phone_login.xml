@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView3"
+
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center"
@@ -44,24 +44,22 @@
                 android:gravity="center"
                 app:ccp_defaultNameCode="US" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/Mobile"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint=" "
-                    android:inputType="number"
-                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-            </com.google.android.material.textfield.TextInputLayout>
+            <EditText
+                android:id="@+id/enterPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" "
+                android:inputType="number"
+                android:minHeight="48dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
 
 
         </LinearLayout>
 
         <Button
-            android:id="@+id/otp"
+            android:id="@+id/otpVerify"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"

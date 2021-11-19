@@ -54,7 +54,7 @@ public class cartAdap extends RecyclerView.Adapter<cartAdap.cartViewholder> {
                @Override
                public void onClick(View v) {
                    String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                   FirebaseDatabase.getInstance().getReference("Cart List").child(uid).child(c.getFoodName()).removeValue();
+                   FirebaseDatabase.getInstance().getReference("Cart List").child(uid).child(c.getItemID()).removeValue();
                    AppCompatActivity activity = (AppCompatActivity)v.getContext();
                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new Cust_Cart()).commit();
                }

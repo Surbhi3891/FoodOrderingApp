@@ -3,13 +3,22 @@ package my.foodie.app;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,10 +47,14 @@ import com.paypal.checkout.order.PurchaseUnit;
 import com.paypal.checkout.paymentbutton.PaymentButton;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class Payment extends AppCompatActivity {
@@ -50,13 +63,16 @@ public class Payment extends AppCompatActivity {
 
     PaymentButton payPalButton;
     Button cashPayment;
-    String chefname, itemsAndquantity="";
+    String orderid;
+    String chefname, itemsAndquantity="",chefID,chefPhoneNumber;
     int subtotal = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println("Inside payment page..................");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
+
         payPalButton = findViewById(R.id.payPalButton);
         String amount = String.valueOf(Cust_Cart.TotalBill);
         cashPayment= findViewById(R.id.cashpay);
@@ -68,7 +84,10 @@ public class Payment extends AppCompatActivity {
                 for(DataSnapshot ds :snapshot.getChildren()) {
 
                     chefname = ds.child("chefName").getValue().toString();
+                    chefPhoneNumber=ds.child("chefPhoneNumber").getValue().toString();
+
                     itemsAndquantity= itemsAndquantity +ds.child("foodName").getValue().toString() +","+ ds.child("quantity").getValue().toString()+"; ";
+                    chefID = ds.child("chefID").getValue().toString();
                     //subtotal = subtotal + (Integer.valueOf(ds.child("price").getValue().toString())* Integer.valueOf(ds.child("quantity").getValue().toString()));
 
                 }
@@ -81,11 +100,40 @@ public class Payment extends AppCompatActivity {
             }
         });
 
+//        FirebaseDatabase.getInstance().getReference("Users").child(chefID).addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                User userProfile = snapshot.getValue(User.class);
+//                if(userProfile != null){
+//
+//                    ChefPhoneNumber = userProfile.phone;
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+
+
+
         cashPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 System.out.println("-------------------order name--------"+ ConfirmDetails.cnfName);
                 placeOrder("Pay by Cash");
+
+                if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+                    if(checkSelfPermission(Manifest.permission.SEND_SMS)== PackageManager.PERMISSION_GRANTED){
+                        sendsms();
+                    }else{
+
+                        requestPermissions(new String[]{Manifest.permission.SEND_SMS},1);
+                    }
+
+
+                }
             }
         });
 
@@ -146,7 +194,8 @@ public class Payment extends AppCompatActivity {
 
     private void placeOrder(String paymentMode) {
 
-        String orderid = "Order" + String.valueOf(100001+ (int)(Math.random()*899999));
+        //String
+                orderid = "Order" + String.valueOf(100001+ (int)(Math.random()*899999));
         //final String[] chefname = new String[1];
         String saveCurrentDate, saveCurrTime;
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -181,11 +230,12 @@ public class Payment extends AppCompatActivity {
 //        });
 
 
-        OrderModel orderdetails = new OrderModel(ConfirmDetails.cnfName, ConfirmDetails.cnfAddress, ConfirmDetails.cnfZip, chefname, itemsAndquantity, String.valueOf(Cust_Cart.TotalBill), paymentMode, "Pickup", saveCurrentDate, saveCurrTime,"Confirmed");
+        OrderModel orderdetails = new OrderModel(ConfirmDetails.cnfName, ConfirmDetails.cnfAddress, ConfirmDetails.cnfZip, chefname, itemsAndquantity, String.valueOf(Cust_Cart.TotalBill), paymentMode, "Pickup", saveCurrentDate, saveCurrTime,"Confirmed",ConfirmDetails.cnfPhone);
         FirebaseDatabase.getInstance().getReference("Orders").child(id).child(orderid).setValue(orderdetails).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                Toast.makeText(Payment.this, "Youe order is placed successfully", Toast.LENGTH_LONG).show();
+                //Toast.makeText(Payment.this, "Youe order is placed successfully", Toast.LENGTH_LONG).show();
+
                 FirebaseDatabase.getInstance().getReference("Cart List").child(id).removeValue();
 
                 startActivity(new Intent( Payment.this,CustomerView.class));
@@ -198,4 +248,22 @@ public class Payment extends AppCompatActivity {
 
     }
 
+    private void sendsms(){
+
+//        String phone = phoneNumber.getText().toString().trim();
+        String message = "Congratulations, You have a new order.";
+        try{
+            SmsManager smsmanager = SmsManager.getDefault();
+            smsmanager.sendTextMessage(chefPhoneNumber,null,message,null,null);
+            Toast.makeText(this,"Message is sent",Toast.LENGTH_LONG).show();}
+        catch(Exception e ){
+
+            Toast.makeText(this,"Failed ",Toast.LENGTH_LONG).show();
+        }
+
+
+
+    }
 }
+
+//}

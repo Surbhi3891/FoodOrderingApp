@@ -78,7 +78,7 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
                 //finish();
                 break;
             case R.id.signin_phone:
-                Intent signphone = new Intent(MainMenu.this,SelectLogin.class);
+                Intent signphone = new Intent(MainMenu.this,ChefPhoneLogin.class);
                 signphone.putExtra("Home","Phone");
                 startActivity(signphone);
                 //finish();
