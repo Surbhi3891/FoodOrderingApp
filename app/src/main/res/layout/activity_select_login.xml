@@ -11,7 +11,7 @@
     <LinearLayout
         android:id="@+id/linearlayout2"
         android:layout_width="300dp"
-        android:layout_height="360dp"
+        android:layout_height="300dp"
         android:background="@drawable/background_color"
         android:orientation="vertical"
         android:padding="15dp"
@@ -29,7 +29,7 @@
             android:fontFamily="@font/aclonica"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Cook, eat or deliver happiness in a box.. "
+            android:text="Cook, eat &amp; deliver happiness in a box.. "
             android:textColor="#CC2727"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -62,7 +62,7 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <Button
+        <!--Button
             android:id="@+id/driver"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -74,6 +74,6 @@
             android:text="Connect As Delivery Person"
             android:textColor="#ffffff"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold" /-->
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

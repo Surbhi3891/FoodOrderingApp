@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,11 +22,13 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class EmailLogin extends AppCompatActivity {
 
-    TextInputLayout Email;
-    TextInputLayout Password;
+    EditText Email;
+    EditText Password;
+    //TextInputLayout Password;
     Button Signin;
     String email, pwd;
     TextView forgot_pwd;
+    Button Signup;
 
     FirebaseAuth fbAuth;
 
@@ -34,12 +36,19 @@ public class EmailLogin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chef_email_login);
+        setContentView(R.layout.activity_email_login);
 
         Email = findViewById(R.id.email_login);
         Password = findViewById(R.id.e_password);
         Signin = findViewById(R.id.Email_Btn);
         forgot_pwd= findViewById(R.id.forgot_pwd);
+        Signup = findViewById(R.id.JoinNow);
+        Signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(EmailLogin.this,UserRegisteration.class));
+            }
+        });
         fbAuth = FirebaseAuth.getInstance();
         forgot_pwd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,8 +62,9 @@ public class EmailLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                email = Email.getEditText().getText().toString().trim();
-                pwd = Password.getEditText().getText().toString().trim();
+                email = Email.getText().toString().trim();
+                pwd = Password.getText().toString().trim();
+                //pwd = Password.getEditText().getText().toString().trim();
 
                 if(email.isEmpty()){
                     Email.setError("Email is Required");
@@ -93,7 +103,7 @@ public class EmailLogin extends AppCompatActivity {
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             if(user.isEmailVerified()){
                                 startActivity(new Intent(EmailLogin.this,SelectLogin.class));
-                                finish();
+                                //finish();
                             }else {
 
                                 message.dismiss();

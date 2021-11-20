@@ -30,7 +30,7 @@ public class SelectLogin extends AppCompatActivity {
         //String type= intent.getStringExtra("Home").toString().trim();
         Button Chef = findViewById(R.id.chef);
         Button Customer = findViewById(R.id.customer);
-        Button Delivery = findViewById(R.id.driver);
+        //Button Delivery = findViewById(R.id.driver);
 
         Chef.setOnClickListener(new View.OnClickListener() {
             @Override

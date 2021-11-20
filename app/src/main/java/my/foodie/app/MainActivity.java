@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                Intent intent=new Intent(MainActivity.this,MainMenu.class);
+                Intent intent=new Intent(MainActivity.this,EmailLogin.class);
                 startActivity(intent);
                 finish();
             }

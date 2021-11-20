@@ -5,12 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bckgnd2"
-    tools:context=".ChefRegister">
+    tools:context=".UserRegisteration"
+    >
+
+    <TextView
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/ScrollView1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/background_color"
+        android:textSize="20sp"
+        android:text="Create a homEat account"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginBottom="10dp"
+        android:padding="5dp"
+        android:gravity="center"
+    />
 
     <ScrollView
         android:id="@+id/ScrollView1"
         android:layout_width="300dp"
-        android:layout_height="400dp"
+        android:layout_height="450dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/background_color"
@@ -227,15 +244,16 @@
 
             <Button
                 android:id="@+id/Signup"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:background="@drawable/buttongreen"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/buttonred"
                 android:gravity="center"
-                android:text="Sign up "
+                android:text="create account "
                 android:textColor="#FFFFFF"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
     </ScrollView>

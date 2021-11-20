@@ -14,13 +14,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.google.android.datatransport.runtime.dagger.Reusable;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
@@ -34,7 +30,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.hbb20.CountryCodePicker;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class UserRegisteration extends AppCompatActivity {
 
@@ -56,7 +51,7 @@ public class UserRegisteration extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chef_register);
+        setContentView(R.layout.activity_user_registration);
         Fname = (TextInputLayout) findViewById(R.id.Firstname);
         Lname = (TextInputLayout) findViewById(R.id.Lastname);
         Email = (TextInputLayout) findViewById(R.id.Email);

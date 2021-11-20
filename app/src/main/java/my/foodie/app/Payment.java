@@ -1,14 +1,19 @@
 package my.foodie.app;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -84,7 +89,7 @@ public class Payment extends AppCompatActivity {
                 for(DataSnapshot ds :snapshot.getChildren()) {
 
                     chefname = ds.child("chefName").getValue().toString();
-                    chefPhoneNumber=ds.child("chefPhoneNumber").getValue().toString();
+                    chefPhoneNumber="+1"+ds.child("chefPhoneNumber").getValue().toString();
 
                     itemsAndquantity= itemsAndquantity +ds.child("foodName").getValue().toString() +","+ ds.child("quantity").getValue().toString()+"; ";
                     chefID = ds.child("chefID").getValue().toString();
@@ -121,15 +126,30 @@ public class Payment extends AppCompatActivity {
         cashPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 System.out.println("-------------------order name--------"+ ConfirmDetails.cnfName);
                 placeOrder("Pay by Cash");
+//                if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+//                    if(checkSelfPermission(Manifest.permission.SEND_SMS)== PackageManager.PERMISSION_GRANTED){
+//                        sendsms();
+//                    }else{
+//
+//                        requestPermissions(new String[]{Manifest.permission.SEND_SMS},1);
+//
+//                    }
+//
+//
+//                }
 
                 if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+                    //sendsms(chefPhoneNumber);
                     if(checkSelfPermission(Manifest.permission.SEND_SMS)== PackageManager.PERMISSION_GRANTED){
-                        sendsms();
+                        sendsms(chefPhoneNumber);
                     }else{
 
-                        requestPermissions(new String[]{Manifest.permission.SEND_SMS},1);
+                        //requestPermissions(new String[]{Manifest.permission.SEND_SMS},1);
+                        ActivityCompat.requestPermissions(Payment.this,new String[]{Manifest.permission.SEND_SMS},1);
+
                     }
 
 
@@ -193,6 +213,17 @@ public class Payment extends AppCompatActivity {
     }
 
     private void placeOrder(String paymentMode) {
+        final ProgressDialog message = new ProgressDialog(Payment.this);
+        message.setCancelable(false);
+        message.setCanceledOnTouchOutside(false);
+
+        message.setMessage("Please wait....");
+        message.show();
+//        try {
+//            wait(2, Time.SECOND);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
         //String
                 orderid = "Order" + String.valueOf(100001+ (int)(Math.random()*899999));
@@ -229,17 +260,33 @@ public class Payment extends AppCompatActivity {
 //            }
 //        });
 
-
+        AlertDialog.Builder builder = new AlertDialog.Builder(Payment.this);
         OrderModel orderdetails = new OrderModel(ConfirmDetails.cnfName, ConfirmDetails.cnfAddress, ConfirmDetails.cnfZip, chefname, itemsAndquantity, String.valueOf(Cust_Cart.TotalBill), paymentMode, "Pickup", saveCurrentDate, saveCurrTime,"Confirmed",ConfirmDetails.cnfPhone);
         FirebaseDatabase.getInstance().getReference("Orders").child(id).child(orderid).setValue(orderdetails).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    message.dismiss();
+
+                    builder.setTitle("Order Confirmation!");
+                    builder.setMessage("Your Order is placed successfully.. ");
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            FirebaseDatabase.getInstance().getReference("Cart List").child(id).removeValue();
+                            startActivity(new Intent( Payment.this,CustomerView.class));
+                            finish();
+                        }
+                    });
+                    builder.show();
                 //Toast.makeText(Payment.this, "Youe order is placed successfully", Toast.LENGTH_LONG).show();
 
-                FirebaseDatabase.getInstance().getReference("Cart List").child(id).removeValue();
+                //FirebaseDatabase.getInstance().getReference("Cart List").child(id).removeValue();
 
-                startActivity(new Intent( Payment.this,CustomerView.class));
-                finish();
+
+                //startActivity(new Intent( Payment.this,CustomerView.class));
+                }
+                //finish();
 
             }
         });
@@ -248,15 +295,16 @@ public class Payment extends AppCompatActivity {
 
     }
 
-    private void sendsms(){
+    private void sendsms(String number){
 
 //        String phone = phoneNumber.getText().toString().trim();
         String message = "Congratulations, You have a new order.";
         try{
             SmsManager smsmanager = SmsManager.getDefault();
-            smsmanager.sendTextMessage(chefPhoneNumber,null,message,null,null);
-            Toast.makeText(this,"Message is sent",Toast.LENGTH_LONG).show();}
-        catch(Exception e ){
+            smsmanager.sendTextMessage(number,null,message,null,null);
+           //Toast.makeText(this,"Message is sent",Toast.LENGTH_LONG).show();
+        }
+            catch(Exception e ){
 
             Toast.makeText(this,"Failed ",Toast.LENGTH_LONG).show();
         }
@@ -264,6 +312,8 @@ public class Payment extends AppCompatActivity {
 
 
     }
+
+
 }
 
 //}
