@@ -12,6 +12,11 @@ public class model {
     String userid;
     String itemID;
     String chefPhoneNumber;
+    String chefAddress;
+
+    public String getChefAddress() {
+        return chefAddress;
+    }
 
     public String getChefPhoneNumber() {
         return chefPhoneNumber;

@@ -14,18 +14,140 @@
         android:orientation="vertical"
         android:padding="8dp">
 
-        <ImageView
+        <TextView
+            android:id="@+id/foodname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="foodName"
+            android:textAllCaps="true"
+            android:textColor="@color/purple_700"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <!--ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:id="@+id/foodimageurl"
+            android:layout_marginBottom="8dp"/-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="5dp"
+            android:orientation="horizontal">
+
+            <ImageView
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_gravity="center"
             android:id="@+id/foodimageurl"
             android:layout_marginBottom="8dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:padding="5dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/foodchef"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:drawableLeft="@drawable/ic_baseline_restaurant_20"
+                    android:drawablePadding="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:gravity="top"
+                    />
+                <TextView
+                    android:id="@+id/foodprice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="top"
+                    android:drawableLeft="@drawable/ic_baseline_monetization_on_20"
+                    android:drawablePadding="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    />
+                <TextView
+                    android:id="@+id/foodlocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="top"
+                    android:drawableLeft="@drawable/ic_baseline_location_on_20"
+                    android:drawablePadding="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    />
+
+            </LinearLayout>
+
+                <!--LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chef : "
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                         />
+
+                    <TextView
+                        android:id="@+id/foodchef"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:drawableLeft="@drawable/ic_baseline_restaurant_24"
+                        android:drawablePadding="5dp"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                         />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Price : "
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                         />
+
+                    <TextView
+                        android:id="@+id/foodprice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="5dp"
+                        android:drawableLeft="@drawable/ic_baseline_monetization_on_24"
+                        android:drawablePadding="5dp"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                         />
+
+                </LinearLayou>
+
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/foodname"
@@ -35,35 +157,10 @@
                 android:layout_marginLeft="8dp"
                 android:textColor="@color/black"
                 android:textSize="26sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"/-->
 
 
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Price : "
-                android:textColor="@color/black"
-                android:textSize="22sp"
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/foodprice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:textColor="@color/black"
-                android:textSize="22sp"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
-
-
 
 
     </LinearLayout>

@@ -1,13 +1,9 @@
 <resources>
-    <string name="app_name">FoodApp</string>
+    <string name="app_name">homEat</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
 
 
-    <string-array name="shipper">
-        <item>Shipper 1</item>
-        <item>Shipper 2</item>
-    </string-array>
 
 
     <!-- TODO: Remove or change this placeholder text -->

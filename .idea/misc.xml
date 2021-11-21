@@ -40,11 +40,13 @@
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/fragment_cust_orders.xml" value="0.2653985507246377" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/fragment_food__details.xml" value="0.22" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/fragment_home.xml" value="0.2694746376811594" />
-        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/singleitem.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/orderitem.xml" value="0.2734375" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/singleitem.xml" value="0.22" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/layout/singlerowdesign.xml" value="0.2694746376811594" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/menu/bottom_menu.xml" value="0.18489583333333334" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/menu/bottom_nav_bar.xml" value="0.2734375" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/menu/cust_menu.xml" value="0.2734375" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/menu/search_menu.xml" value="0.2734375" />
       </map>
     </option>
   </component>

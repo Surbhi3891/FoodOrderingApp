@@ -3,7 +3,7 @@ package my.foodie.app;
 public class OrderModel {
     String orderid;
     String name;
-    String OrderStatus;
+    String orderStatus;
    String customerPhoneNumber;
 
     public OrderModel() {
@@ -11,8 +11,13 @@ public class OrderModel {
 
     String address;
 
-    public OrderModel( String name, String address, String zip, String chefname, String items, String price, String paymenttype, String deliverymode, String date, String time,String OrderStatus,String customerPhoneNumber) {
+    public String getOrderStatus() {
+        return orderStatus;
+    }
 
+    public OrderModel(String orderid, String name, String address, String zip, String chefname, String items, String price, String paymenttype, String deliverymode, String date, String time, String orderStatus, String customerPhoneNumber) {
+
+        this.orderid=orderid;
         this.name = name;
         this.address = address;
         this.zip = zip;
@@ -23,13 +28,11 @@ public class OrderModel {
         this.deliverymode = deliverymode;
         this.date = date;
         this.time = time;
-        this.OrderStatus = OrderStatus;
+        this.orderStatus = orderStatus;
         this.customerPhoneNumber=customerPhoneNumber;
     }
 
-    public String getOrderStatus() {
-        return OrderStatus;
-    }
+
 
     public String getOrderid() {
         return orderid;

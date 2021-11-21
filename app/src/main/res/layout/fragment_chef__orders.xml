@@ -5,11 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".Chef_Orders">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/orderList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Orders"
-        android:textSize="30sp"/>
+
+        android:gravity="center" />
 
 </FrameLayout>

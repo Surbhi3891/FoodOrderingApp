@@ -8,8 +8,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.appcompat.widget.SearchView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 
-public class Cust_Home extends Fragment {
+public class Cust_Home extends Fragment{
 
     RecyclerView recview_cust;
     DatabaseReference data;
@@ -63,7 +68,7 @@ public class Cust_Home extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_cust__home, container, false);
-
+        setHasOptionsMenu(true);
         recview_cust = v.findViewById(R.id.Cust_menu);
         data = FirebaseDatabase.getInstance().getReference("FoodMenu");
         recview_cust.setHasFixedSize(true);
@@ -78,12 +83,14 @@ public class Cust_Home extends Fragment {
 
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
 
-
-
                     model md = dataSnapshot.getValue(model.class);
                     cust_menu.add(md);
                 }
+
+                cust_adapter.setFullList(new ArrayList<>(cust_menu));
+                cust_adapter.setnosearchlist(new ArrayList<>(cust_menu));
                 cust_adapter.notifyDataSetChanged();
+
 
             }
 
@@ -93,5 +100,35 @@ public class Cust_Home extends Fragment {
             }
         });
         return v;
+
     }
+
+
+
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+           inflater.inflate(R.menu.search_menu,menu);
+           MenuItem item = menu.findItem(R.id.action_search);
+           SearchView searchView = (SearchView) item.getActionView();
+           searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+               @Override
+               public boolean onQueryTextSubmit(String query) {
+                   return false;
+               }
+
+               @Override
+               public boolean onQueryTextChange(String newText) {
+
+                   cust_adapter.getFilter().filter(newText);
+                   return false;
+               }
+           }) ;
+
+
+        super.onCreateOptionsMenu(menu, inflater);
+
+    }
+
+
 }

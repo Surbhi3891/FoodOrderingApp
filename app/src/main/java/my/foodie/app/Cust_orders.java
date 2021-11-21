@@ -2,18 +2,32 @@ package my.foodie.app;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Cust_orders#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+
+
 public class Cust_orders extends Fragment {
+
+    RecyclerView recview_cust_order;
+    DatabaseReference dbref;
+    orderADAP cust_order_adapter;
+    ArrayList<OrderModel> cust_order;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,15 +42,7 @@ public class Cust_orders extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Cust_orders.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static Cust_orders newInstance(String param1, String param2) {
         Cust_orders fragment = new Cust_orders();
         Bundle args = new Bundle();
@@ -59,6 +65,35 @@ public class Cust_orders extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cust_orders, container, false);
+        View v = inflater.inflate(R.layout.fragment_cust_orders, container, false);
+
+        recview_cust_order = v.findViewById(R.id.Cust_orderList);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userid = user.getUid();
+        dbref = FirebaseDatabase.getInstance().getReference("Orders").child(userid);
+        recview_cust_order.setHasFixedSize(true);
+        recview_cust_order.setLayoutManager(new LinearLayoutManager(getContext()));
+        cust_order = new ArrayList<>();
+        cust_order_adapter = new orderADAP(getContext(),cust_order);
+        recview_cust_order.setAdapter(cust_order_adapter);
+        dbref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot ds : snapshot.getChildren()){
+
+
+                    OrderModel od = ds.getValue(OrderModel.class);
+                    cust_order.add(od);
+                }
+                cust_order_adapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return v;
     }
 }
