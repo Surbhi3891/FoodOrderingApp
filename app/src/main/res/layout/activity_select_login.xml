@@ -11,7 +11,7 @@
     <LinearLayout
         android:id="@+id/linearlayout2"
         android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_height="320dp"
         android:background="@drawable/background_color"
         android:orientation="vertical"
         android:padding="15dp"
@@ -24,15 +24,14 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:fontFamily="@font/aclonica"
+            android:fontFamily="@font/aref_ruqaa"
             android:gravity="center"
-            android:padding="10dp"
-            android:text="Cook, eat &amp; deliver happiness in a box.. "
-            android:textColor="#CC2727"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:padding="5dp"
+            android:text="Select  your  homEat  profile"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="bold|italic"
+            />
 
         <Button
             android:id="@+id/chef"
@@ -41,12 +40,12 @@
             android:layout_marginLeft="4sp"
             android:layout_marginTop="25dp"
             android:layout_marginRight="4sp"
-            android:background="@drawable/buttongreen"
+            android:background="@drawable/purplebutton"
             android:gravity="center"
-            android:text="Connect As Chef"
+            android:text="Chef"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            />
 
         <Button
             android:id="@+id/customer"
@@ -55,12 +54,12 @@
             android:layout_marginLeft="4sp"
             android:layout_marginTop="25dp"
             android:layout_marginRight="4sp"
-            android:background="@drawable/buttonred"
+            android:background="@drawable/purplebutton"
             android:gravity="center"
-            android:text="Connect As Customer"
+            android:text="Customer"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
-            android:textStyle="bold" />
+             />
 
         <!--Button
             android:id="@+id/driver"

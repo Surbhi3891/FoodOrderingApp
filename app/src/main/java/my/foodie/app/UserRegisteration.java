@@ -37,7 +37,7 @@ public class UserRegisteration extends AppCompatActivity {
     Spinner State;
     //RadioGroup Login;
     //RadioButton Logintype;
-    CheckBox Chef,Customer,Driver;
+    //CheckBox Chef,Customer,Driver;
     CountryCodePicker code;
     Button Chef_signup;
     FirebaseAuth FbAuth;
@@ -46,7 +46,8 @@ public class UserRegisteration extends AppCompatActivity {
     ValueEventListener listener;
     ArrayAdapter<String> adapter;
     ArrayList<String> spinnerDataList;
-    String fname,lname,email,pwd, cpwd,phone,address,city,state,zip, login_type;
+    String fname,lname,email,pwd, cpwd,phone,address,city,state,zip;
+            //login_type;
     //boolean isChef, isCustomer,isDriver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,44 +64,44 @@ public class UserRegisteration extends AppCompatActivity {
         //State = (TextInputLayout) findViewById(R.id.State);
         State = (Spinner) findViewById(R.id.State);
         Zip = (TextInputLayout) findViewById(R.id.ZipCode);
-        Chef= findViewById(R.id.cb_chef);
-        Customer=findViewById(R.id.cb_cust);
-        Driver=findViewById(R.id.cb_driver);
+        //Chef= findViewById(R.id.cb_chef);
+        //Customer=findViewById(R.id.cb_cust);
+        //Driver=findViewById(R.id.cb_driver);
         //Login = findViewById(R.id.rg_types);
         //Logintype = findViewById(Login.getCheckedRadioButtonId());
 
         Chef_signup = (Button) findViewById(R.id.Signup);
         code = (CountryCodePicker) findViewById(R.id.ccp);
-        Chef.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(Chef.isChecked()){
-                   login_type = Chef.getText().toString().trim();
-                    //isChef=true;
-                }
-
-            }
-        });
-        Customer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (Customer.isChecked()){
-                    login_type= login_type +","+ Customer.getText().toString().trim();
-                    //isCustomer= true;
-                }
-            }
-        });
-        Driver.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(Driver.isChecked()){
-                    login_type = login_type+","+Driver.getText().toString().trim();
-                    //isDriver=true;
-                }
-
-
-            }
-        });
+//        Chef.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(Chef.isChecked()){
+//                   login_type = Chef.getText().toString().trim();
+//                    //isChef=true;
+//                }
+//
+//            }
+//        });
+//        Customer.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (Customer.isChecked()){
+//                    login_type= login_type +","+ Customer.getText().toString().trim();
+//                    //isCustomer= true;
+//                }
+//            }
+//        });
+//        Driver.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(Driver.isChecked()){
+//                    login_type = login_type+","+Driver.getText().toString().trim();
+//                    //isDriver=true;
+//                }
+//
+//
+//            }
+//        });
 
 
         dbRef = firebaseDB.getInstance().getReference("States");
@@ -157,7 +158,7 @@ public class UserRegisteration extends AppCompatActivity {
                                if (task.isSuccessful()) {
 
                                    //User user = new User(fname, lname, email, pwd, cpwd, phone, address, city, state, zip, login_type);
-                                   User user = new User(fname, lname, email, phone, address, city, state, zip, login_type);
+                                   User user = new User(fname, lname, email, phone, address, city, state, zip);
                                    System.out.println(" 333");
                                    FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                        @Override

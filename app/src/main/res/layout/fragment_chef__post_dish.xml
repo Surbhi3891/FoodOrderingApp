@@ -26,58 +26,77 @@
         android:layout_height="100dp"
         android:background="@drawable/ic_baseline_photo_camera_24"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="10dp"
         />
+
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:hint="Enter Food Item"
-            android:layout_marginBottom="10dp"
-            android:gravity="center"
             android:id="@+id/food_item"
-            android:inputType="text"/>
-        <EditText
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:hint="Food Ingredients"
-            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:gravity="center"
+            android:hint="Enter Food Item"
+            android:inputType="text"
+            android:minHeight="48dp" />
+
+        <EditText
             android:id="@+id/ingredients"
-            android:inputType="text"/>
-        <EditText
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:hint="Description"
-            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:gravity="center"
+            android:hint="Food Ingredients"
+            android:inputType="text"
+            android:minHeight="48dp" />
+
+        <EditText
             android:id="@+id/description"
-            android:inputType="text"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:hint="Description"
+            android:inputType="text"
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/calories"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:gravity="center"
             android:hint="Calories per serving"
-            android:inputType="number" />
+            android:inputType="number"
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/price"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:gravity="center"
             android:hint="Price"
-            android:inputType="number|numberDecimal" />
+            android:inputType="number|numberDecimal"
+            android:minHeight="48dp" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Accepting Orders"
+            android:textSize="14sp"
+            android:textColor="@color/purple_500"
+            android:layout_marginLeft="10dp"
+            android:minHeight="48dp"
+            android:id="@+id/postAcceptOrders"/>
+
         <Button
+            android:id="@+id/post_food"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/buttonred"
+            android:background="@drawable/purplebutton"
+            android:padding="5dp"
             android:text="Post"
             android:textColor="@color/white"
-            android:id="@+id/post_food"
-            android:textSize="18sp"/>
+            android:textSize="16sp" />
 
 
     </LinearLayout>

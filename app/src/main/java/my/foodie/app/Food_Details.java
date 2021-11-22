@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,13 +52,15 @@ public class Food_Details extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    String fooditem,Desc,ingd,img,price,cal,chefname,itemID,userid,chefPhoneNumber;
+    String fooditem,Desc,ingd,img,price,cal,chefname,itemID,userid,chefPhoneNumber,acceptingOrders;
     ImageView Fd_Img;
-    TextView Fd_name , Fd_desc, Fd_ing, Fd_price, Fd_cal, Fd_chef ;
-    Button Fd_Delete;
+    TextView Fd_name , Fd_desc, Fd_ing, Fd_price, Fd_cal, Fd_chef,Fd_chefContact ;
+    //Button Fd_Delete;
+    TextView Fd_Delete;
     Button Fd_AddtoCart ;
     ElegantNumberButton itemCount ;
     Button AddtoCart ;
+    CheckBox acceptorders;
     int Count =0;
     String itemkey;
     boolean isvalid = false;
@@ -67,7 +70,7 @@ public class Food_Details extends Fragment {
     public Food_Details() {
 
     }
-    public Food_Details(String fooditem,String Desc, String ingd,String img,String price,String cal,String chefname, String itemID,String userid,String chefPhoneNumber) {
+    public Food_Details(String fooditem,String Desc, String ingd,String img,String price,String cal,String chefname, String itemID,String userid,String chefPhoneNumber,String acceptingOrders) {
 
         this.fooditem = fooditem;
         this.Desc = Desc;
@@ -79,6 +82,7 @@ public class Food_Details extends Fragment {
         this.itemID=itemID;
         this.userid=userid;
         this.chefPhoneNumber=chefPhoneNumber;
+        this.acceptingOrders=acceptingOrders;
 
 
 
@@ -120,23 +124,32 @@ public class Food_Details extends Fragment {
          Fd_price = v.findViewById(R.id.FD_price);
          Fd_cal = v.findViewById(R.id.FD_cal);
          Fd_chef = v.findViewById(R.id.FD_chef);
+         Fd_chefContact=v.findViewById(R.id.FD_chef_contact);
          Fd_Delete = v.findViewById(R.id.del);
          Fd_AddtoCart = v.findViewById(R.id.addCart);
          itemCount = v.findViewById(R.id.itemNumber);
          AddtoCart = v.findViewById(R.id.addCart);
+         acceptorders = v.findViewById(R.id.checkAcceptOrders);
         String currentActivity = getActivity().toString();
         //System.out.println(currentActivity+"----------------------------------------------cuttent Activity");
+        if(acceptingOrders.equals("Yes")){
+            acceptorders.setChecked(true);
+        }else {acceptorders.setChecked(false);
+
+        }
 
         Fd_name.setText(fooditem);
         Fd_desc.setText(Desc);
         Fd_ing.setText(ingd);
-        Fd_price.setText(price);
+        Fd_price.setText("$"+price);
         Fd_cal.setText(cal);
         Fd_chef.setText(chefname);
+        Fd_chefContact.setText(chefPhoneNumber);
         Glide.with(getContext()).load(img).into(Fd_Img);
 
         if (currentActivity.contains("CustomerView")){
             Fd_Delete.setVisibility(View.INVISIBLE);
+            acceptorders.setVisibility(View.INVISIBLE);
 
         }
         if (currentActivity.contains("RecyclerViewNav")){
@@ -145,6 +158,32 @@ public class Food_Details extends Fragment {
 
         }
          cartexists();
+
+       acceptorders.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               if(acceptorders.isChecked()== true){
+                   FirebaseDatabase.getInstance().getReference("FoodMenu").child(itemID).child("acceptingOrders").setValue("Yes");
+
+               }
+               if(acceptorders.isChecked()==false){
+                   FirebaseDatabase.getInstance().getReference("FoodMenu").child(itemID).child("acceptingOrders").setValue("No");
+
+
+               }
+
+           }
+       });
+
+//        if(acceptorders.isChecked()== true){
+//            FirebaseDatabase.getInstance().getReference("FoodMenu").child(itemID).child("acceptingOrders").setValue("true");
+//
+//        }
+//        if(acceptorders.isChecked()==false){
+//            FirebaseDatabase.getInstance().getReference("FoodMenu").child(itemID).child("acceptingOrders").setValue("false");
+//
+//
+//        }
 
         AddtoCart.setOnClickListener(new View.OnClickListener() {
             @Override

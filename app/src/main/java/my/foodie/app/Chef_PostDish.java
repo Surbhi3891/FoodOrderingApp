@@ -1,7 +1,9 @@
 package my.foodie.app;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -66,7 +69,8 @@ public class Chef_PostDish extends Fragment {
     FirebaseStorage storage;
     StorageReference storageref,ref;
     String userID,rand;
-    String chefName, state,city,fooditem,desc, ingredient,calories, price,itemID,lname,ChefphoneNumber,chefAddress;
+    String chefName, state,city,fooditem,desc, ingredient,calories, price,itemID,lname,ChefphoneNumber,chefAddress,acceptingOrders;
+    CheckBox acceptOrder;
 
 
 
@@ -124,6 +128,7 @@ public class Chef_PostDish extends Fragment {
         foodPrice= Vw.findViewById(R.id.price);
         imgBtn = Vw.findViewById(R.id.camera_btn);
         postItem=Vw.findViewById(R.id.post_food);
+        acceptOrder=Vw.findViewById(R.id.postAcceptOrders);
         fbAuth = FirebaseAuth.getInstance();
         dbref = FirebaseDatabase.getInstance().getReference("FoodMenu");
         imgBtn.setOnClickListener(new View.OnClickListener() {
@@ -133,7 +138,10 @@ public class Chef_PostDish extends Fragment {
             }
         });
 
-
+         if(acceptOrder.isChecked()==true){
+             acceptingOrders="Yes";
+         }else{acceptingOrders="No";
+         }
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         userID = user.getUid();
@@ -169,11 +177,11 @@ public class Chef_PostDish extends Fragment {
              price=foodPrice.getText().toString().trim();
              itemID = lname + String.valueOf(1001+ (int)(Math.random()*8999));
 
-             //if(isValid()){
+             if(isValid()){
 
                  uploadData();
-                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new ChefHomeFragment()).addToBackStack(null).commit();
-             //}
+                 //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new ChefHomeFragment()).addToBackStack(null).commit();
+             }
 
          }
      });
@@ -183,6 +191,12 @@ public class Chef_PostDish extends Fragment {
     }
 
     private void uploadData() {
+        final ProgressDialog message = new ProgressDialog(getContext());
+        message.setCancelable(false);
+        message.setCanceledOnTouchOutside(false);
+
+        message.setMessage("Please wait....");
+        message.show();
 
         ref = storageref.child(fooditem+ " "+chefName);
         uploadTask = ref.putFile(imgUri);
@@ -200,12 +214,29 @@ public class Chef_PostDish extends Fragment {
 
                 if(task.isSuccessful()){
                    Uri downloadUri = task.getResult();
-                    FoodMenu menuitem = new FoodMenu(chefName,fooditem,ingredient,desc,calories,price,String.valueOf(downloadUri),rand,userID,itemID,ChefphoneNumber,chefAddress);
+                    FoodMenu menuitem = new FoodMenu(chefName,fooditem,ingredient,desc,calories,price,String.valueOf(downloadUri),rand,userID,itemID,ChefphoneNumber,chefAddress,acceptingOrders);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                     FirebaseDatabase.getInstance().getReference("FoodMenu").child(itemID).setValue(menuitem).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             //progressDialog.dismiss();
-                            Toast.makeText(getActivity(),"Food Item posted.",Toast.LENGTH_LONG).show();
+                            if (task.isSuccessful()){
+                                message.dismiss();
+
+                                builder.setTitle("Congratulations!");
+                                builder.setMessage("Your item is posted.. ");
+                                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new ChefHomeFragment()).addToBackStack(null).commit();
+
+                                    }
+                                });
+                                builder.show();
+
+                            }
+                            //Toast.makeText(getActivity(),"Food Item posted.",Toast.LENGTH_LONG).show();
 
                         }
                    });
@@ -231,7 +262,7 @@ public class Chef_PostDish extends Fragment {
                     ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-                            FoodMenu menuitem = new FoodMenu(chefName,fooditem,ingredient,desc,calories,price,String.valueOf(uri),rand,userID,itemID,ChefphoneNumber,chefAddress);
+                            FoodMenu menuitem = new FoodMenu(chefName,fooditem,ingredient,desc,calories,price,String.valueOf(uri),rand,userID,itemID,ChefphoneNumber,chefAddress,"true");
                             FirebaseDatabase.getInstance().getReference("FoodMenu").child(state).child(city).child(userID).setValue(menuitem).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
@@ -293,6 +324,8 @@ public class Chef_PostDish extends Fragment {
         }
         if (imgUri != null){
             isValidimg= true;
+        }else{
+            Toast.makeText(getActivity(),"Picture not selected", Toast.LENGTH_LONG).show();
         }
 
    allValid =(isValidfoodItem && isValidDesc && isValidIng && isValidCal &&isValidPrice && isValidimg);

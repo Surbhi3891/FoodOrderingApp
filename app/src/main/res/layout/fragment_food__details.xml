@@ -7,106 +7,199 @@
     tools:context=".Food_Details"
     android:layout_gravity="center">
 
-    <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
         android:layout_gravity="center"
         android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:orientation="vertical">
+
+
 
         <ImageView
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_gravity="center"
-            android:id="@+id/FD_img"/>
-        <TextView
+            android:id="@+id/FD_img"
+            android:padding="10dp"/>
+
+             <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textColor="@color/Black"
-            android:textSize="25sp"
-            android:id="@+id/FD_name"
-        />
+            android:orientation="horizontal"
+                 android:paddingTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="viewStart"
+                android:textStyle="bold"
+                android:textColor="@color/purple_500"
+                android:textSize="20sp"
+                android:text="Food"
+                android:id="@+id/FD_name"
+                android:textAllCaps="true"
+                />
+                 <View
+                     android:layout_width="0dp"
+                     android:layout_height="0dp"
+                     android:layout_weight="1" />
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:paddingRight="15dp"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/FD_price"
+                     android:text="$10"
+                     android:textStyle="bold"
+                     android:textColor="@color/Black"
+                     android:textSize="20sp"/>
+             </LinearLayout>
+
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/FD_desc"
-            android:gravity="center"
-            android:textStyle="bold"
+            android:textAlignment="viewStart"
             android:textColor="@color/Black"
-            android:textSize="25sp"/>
+            android:textSize="16sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ingredients"
+                android:textColor="@color/purple_500"
+                android:textSize="12sp"
+                android:paddingTop="5dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/FD_ing"
-            android:gravity="center"
-            android:textStyle="bold"
+            android:paddingTop="5dp"
+            android:textAlignment="viewStart"
             android:textColor="@color/Black"
-            android:textSize="25sp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/FD_price"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textColor="@color/Black"
-            android:textSize="25sp"/>
+            android:textSize="16sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Calories per serving"
+                android:textColor="@color/purple_500"
+                android:textSize="12sp"
+                android:paddingTop="5dp"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/FD_cal"
-            android:gravity="center"
-            android:textStyle="bold"
+            android:textAlignment="viewStart"
             android:textColor="@color/Black"
-            android:textSize="25sp"/>
+            android:textSize="16sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chef"
+                android:textColor="@color/purple_500"
+                android:textSize="12sp"
+                android:paddingTop="5dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/FD_chef"
-            android:gravity="center"
-            android:textStyle="bold"
+            android:textAlignment="viewStart"
+            android:paddingTop="5dp"
             android:textColor="@color/Black"
-            android:textSize="25sp"/>
-        <Button
-            android:id="@+id/del"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Delete"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:background="@drawable/buttonred"
-            android:textSize="20sp"
-            android:layout_marginTop="10dp"
-            />
+            android:textSize="16sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/FD_chef_contact"
+                android:textAlignment="viewStart"
+                android:drawableLeft="@drawable/ic_purplephone"
+                android:paddingTop="5dp"
+                android:textColor="@color/Black"
+                android:textSize="16sp"/>
+
+
+            <!--Button
+                android:id="@+id/del"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttonred"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Delete"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/white"
+                android:textSize="16sp" /-->
+
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center">
-
-        <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            app:backGroundColor="@color/Green"
-            app:textSize="8sp"
-            app:initialNumber="1"
-            app:finalNumber="10"
-            android:id="@+id/itemNumber"
-            />
-
+            android:paddingTop="5dp"
+            >
+            <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+                android:id="@+id/itemNumber"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                app:backGroundColor="@color/OffWhite"
+                app:finalNumber="10"
+                app:initialNumber="1"
+                android:padding="5dp"
+                app:textColor="@color/purple_500"
+                app:textSize="6sp" />
             <Button
                 android:id="@+id/addCart"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginRight="10dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@color/Green"
+
+                android:background="@drawable/purplebutton"
                 android:gravity="center"
+                android:padding="5dp"
                 android:text="   Add To Cart   "
-                android:layout_marginLeft="8dp"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            >
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Accepting Orders"
+                android:textSize="14sp"
+                android:textColor="@color/purple_500"
+                android:layout_marginLeft="10dp"
+                android:minHeight="48dp"
+                android:id="@+id/checkAcceptOrders"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/del"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/ic_baseline_delete_30"
+                android:layout_marginRight="10dp"/>
+        </LinearLayout>
+
+
 
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

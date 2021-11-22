@@ -8,8 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,12 +26,12 @@ import com.google.firebase.auth.FirebaseUser;
 public class EmailLogin extends AppCompatActivity {
 
     EditText Email;
-    EditText Password;
-    //TextInputLayout Password;
+    //EditText Password;
+    TextInputLayout Password;
     Button Signin;
     String email, pwd;
     TextView forgot_pwd;
-    Button Signup;
+    TextView Signup;
 
     FirebaseAuth fbAuth;
 
@@ -37,6 +40,48 @@ public class EmailLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email_login);
+
+        final Animation Zoomin = AnimationUtils.loadAnimation(this, R.anim.zoomin);
+        final Animation Zoomout = AnimationUtils.loadAnimation(this, R.anim.zoomout);
+
+        ImageView bg = findViewById(R.id.bg);
+        bg.setAnimation(Zoomin);
+        bg.setAnimation(Zoomout);
+
+        Zoomout.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                bg.startAnimation(Zoomin);
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+        Zoomin.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                bg.startAnimation(Zoomout);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
 
         Email = findViewById(R.id.email_login);
         Password = findViewById(R.id.e_password);
@@ -63,8 +108,8 @@ public class EmailLogin extends AppCompatActivity {
             public void onClick(View v) {
 
                 email = Email.getText().toString().trim();
-                pwd = Password.getText().toString().trim();
-                //pwd = Password.getEditText().getText().toString().trim();
+                //pwd = Password.getText().toString().trim();
+                pwd = Password.getEditText().getText().toString().trim();
 
                 if(email.isEmpty()){
                     Email.setError("Email is Required");

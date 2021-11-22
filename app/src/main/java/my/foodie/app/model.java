@@ -13,6 +13,11 @@ public class model {
     String itemID;
     String chefPhoneNumber;
     String chefAddress;
+    String acceptingOrders;
+
+    public String getAcceptingOrders() {
+        return acceptingOrders;
+    }
 
     public String getChefAddress() {
         return chefAddress;

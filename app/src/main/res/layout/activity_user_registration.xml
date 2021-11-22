@@ -18,7 +18,7 @@
         android:textSize="20sp"
         android:text="Create a homEat account"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="#512C93"
         android:layout_marginBottom="10dp"
         android:padding="5dp"
         android:gravity="center"
@@ -146,7 +146,7 @@
 
             </LinearLayout>
 
-            <TextView
+            <!--TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -154,12 +154,12 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <!--RadioGroup
+            <RadioGroup
                 android:id="@+id/rg_types"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"-->
 
-                <CheckBox
+                <!--CheckBox
                     android:id="@+id/cb_chef"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -179,7 +179,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Driver"
-                    android:textSize="16sp" />
+                    android:textSize="16sp" /-->
             <!--/RadioGroup-->
 
             <com.google.android.material.textfield.TextInputLayout
@@ -253,7 +253,7 @@
                 android:gravity="center"
                 android:text="create account "
                 android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
         </LinearLayout>
     </ScrollView>

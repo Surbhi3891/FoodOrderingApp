@@ -3,6 +3,8 @@ package my.foodie.app;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -47,7 +49,7 @@ public class Update_Profile extends AppCompatActivity {
         dbRef_states = firebaseDB.getInstance().getReference("States");
         userRef=firebaseDB.getInstance().getReference("Users");
 
-
+        String type = getIntent().getStringExtra("LoginType");
         user = FirebaseAuth.getInstance().getCurrentUser();
         dbRef= FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
@@ -57,11 +59,11 @@ public class Update_Profile extends AppCompatActivity {
         //RadioGroup Login = findViewById(R.id.rg_types_update);
         //RadioButton Logintype_update = findViewById(Login.getCheckedRadioButtonId());
 
-        CheckBox chef = (CheckBox) findViewById(R.id.cb_chef_update);
-        CheckBox cust=(CheckBox) findViewById(R.id.cb_cust_update);
-        CheckBox driver= (CheckBox) findViewById(R.id.cb_driver_update);
+        //CheckBox chef = (CheckBox) findViewById(R.id.cb_chef_update);
+        //CheckBox cust=(CheckBox) findViewById(R.id.cb_cust_update);
+        //CheckBox driver= (CheckBox) findViewById(R.id.cb_driver_update);
 
-        chef.setOnClickListener(new View.OnClickListener() {
+        /*chef.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(chef.isChecked()){
@@ -85,7 +87,7 @@ public class Update_Profile extends AppCompatActivity {
                     Logintype_update=Logintype_update+","+driver.getText().toString().trim();
                 }
             }
-        });
+        });*/
 
         EditText fname_update = findViewById(R.id.fname_update);
         EditText lname_update = findViewById(R.id.lname_update);
@@ -179,17 +181,36 @@ public class Update_Profile extends AppCompatActivity {
                 userRef.child(userID).child("city").setValue(City);
                 userRef.child(userID).child("zip").setValue(Zip);
                 userRef.child(userID).child("phone").setValue(phoneNumber);
-                userRef.child(userID).child("type").setValue(Logintype_update);
+                //userRef.child(userID).child("type").setValue(Logintype_update);
 
-                Toast.makeText(Update_Profile.this,"User Profile has been updated..",Toast.LENGTH_LONG).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(Update_Profile.this);
+                builder.setTitle("Profile Update");
+                builder.setMessage("Your profile has been updated. Refresh the page to see updated profile");
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+//                        startActivity(new Intent(Update_Profile.this,RecyclerViewNav.class));
+//                        try {
+//                            Thread.sleep(5000);
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
+//                        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new ChefProfile()).commit();
+                    }
+                });
+                builder.show();
 
-                finish();
+                //Toast.makeText(Update_Profile.this,"User Profile has been updated..",Toast.LENGTH_LONG).show();
+
+                //finish();
                 //startActivity(new Intent (Update_Profile.this,UserProfile.class));
 
 
 
             }
         });
+
         Cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

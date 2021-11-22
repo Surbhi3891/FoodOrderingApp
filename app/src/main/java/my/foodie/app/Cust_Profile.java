@@ -82,13 +82,16 @@ public class Cust_Profile extends Fragment {
         email=V.findViewById(R.id.email_profile);
         address=V.findViewById(R.id.location_profile);
         phone=V.findViewById(R.id.mobile_profile);
-        usertype=V.findViewById(R.id.logintype_profile);
+        //usertype=V.findViewById(R.id.logintype_profile);
         UpdateProfile=V.findViewById(R.id.updateP_btn);
         logOutprofile=V.findViewById(R.id.signOut_Btn);
         UpdateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(),Update_Profile.class));
+                Intent intent = new Intent(getActivity(),Update_Profile.class);
+                intent.putExtra("LoginType","Customer");
+                startActivity(intent);
+
             }
         });
         logOutprofile.setOnClickListener(new View.OnClickListener() {
@@ -114,12 +117,12 @@ public class Cust_Profile extends Fragment {
                     String phone_number = userProfile.phone;
                     String loc = userProfile.address +", " +userProfile.city+", " +userProfile.state+", " +userProfile.zip;
                     String emailID = userProfile.email;
-                    String userType = userProfile.type;
+                    //String userType = userProfile.type;
                     name.setText(fullname);
                     email.setText(emailID);
                     phone.setText(phone_number);
                     address.setText(loc);
-                    usertype.setText(userType);
+                    //usertype.setText(userType);
 
                 }
             }

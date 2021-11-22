@@ -4,8 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bckgnd2"
     tools:context=".EmailLogin">
+
+    <ImageView
+        android:id="@+id/bg"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bckgnd2" />
 
     <LinearLayout
         android:layout_width="300dp"
@@ -27,7 +37,7 @@
             android:fontFamily="@font/aclonica"
             android:gravity="center"
             android:text="homEat"
-            android:textColor="#E61C1C"
+            android:textColor="#673AB7"
             android:textSize="34sp"
             android:textStyle="bold" />
 
@@ -65,22 +75,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:drawableLeft="@drawable/ic_baseline_email_24"
+            android:drawableLeft="@drawable/ic_baseline_email_gray"
             android:drawablePadding="5dp"
             android:hint="Enter Email"
             android:inputType="textEmailAddress"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            android:textSize="16sp" />
 
-        <EditText
+        <!--EditText
             android:id="@+id/e_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:hint="Enter Password"
             android:inputType="textPassword"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            android:textSize="16sp"
+            app:passwordToggleEnabled="true"
+            /-->
 
-        <!--com.google.android.material.textfield.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/e_password"
@@ -93,9 +107,10 @@
                 android:layout_height="wrap_content"
                 android:hint="Enter Password"
                 android:drawablePadding="15dp"
+                android:textSize="16sp"
                 android:inputType="textPassword"
-                tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
-        </com.google.android.material.textfield.TextInputLayout-->
+               />
+        </com.google.android.material.textfield.TextInputLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -112,23 +127,23 @@
             android:padding="10dp"
             android:gravity="center"
             android:text="Sign In"
-            android:background="@drawable/buttongreen"
+            android:background="@drawable/purplebutton"
             android:layout_marginTop="15dp"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:textColor="#ffffff"
             />
 
-        <Button
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/JoinNow"
             android:padding="10dp"
             android:gravity="center"
-            android:text="JOIN Now"
-            android:background="@drawable/buttonblue"
+            android:text="JOIN NOW"
+            android:textStyle="bold"
             android:layout_marginTop="15dp"
-            android:textSize="18sp"
-            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:textColor="#673AB7"
             />
         <!--Button
             android:layout_width="match_parent"

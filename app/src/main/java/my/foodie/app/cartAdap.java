@@ -44,7 +44,7 @@ public class cartAdap extends RecyclerView.Adapter<cartAdap.cartViewholder> {
            CartModel c = cartList.get(position);
            holder.foodName.setText(c.getFoodName());
            holder.price.setText(c.getPrice());
-           holder.quantity.setNumber(c.getQuantity());
+           holder.quantity.setText(c.getQuantity());
 
 
 
@@ -69,8 +69,9 @@ public class cartAdap extends RecyclerView.Adapter<cartAdap.cartViewholder> {
     public static class cartViewholder extends RecyclerView.ViewHolder{
 
         TextView foodName, price;
-        ElegantNumberButton quantity;
-        ImageButton deleteitem;
+        TextView quantity;
+        //ImageButton deleteitem;
+        TextView deleteitem;
 
         public cartViewholder(@NonNull View itemView) {
             super(itemView);

@@ -84,7 +84,9 @@ public class Cust_Home extends Fragment{
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
 
                     model md = dataSnapshot.getValue(model.class);
+                    if(md.getAcceptingOrders().equals("Yes")){
                     cust_menu.add(md);
+                    }
                 }
 
                 cust_adapter.setFullList(new ArrayList<>(cust_menu));

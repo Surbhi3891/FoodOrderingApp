@@ -55,7 +55,7 @@ public class UserProfile extends AppCompatActivity {
         final TextView Email = (TextView) findViewById(R.id.email_profile);
         final TextView FullAddress = (TextView) findViewById(R.id.Address_profile);
         final TextView Phone= (TextView) findViewById(R.id.Phone_profile);
-        final TextView Type= (TextView) findViewById(R.id.type_profile);
+        //final TextView Type= (TextView) findViewById(R.id.type_profile);
 
         dbRef.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -72,7 +72,7 @@ public class UserProfile extends AppCompatActivity {
                     String State = userProfile.state;
                     String Zip = userProfile.zip;
                     String phoneNumber = userProfile.phone;
-                    String type = userProfile.type;
+                    //String type = userProfile.type;
 
 
                     Fname.setText(firstName);
@@ -80,7 +80,7 @@ public class UserProfile extends AppCompatActivity {
                     Email.setText(Email_profile);
                     FullAddress.setText(Address + ", " + City + ", " + State + ", " + Zip);
                     Phone.setText(phoneNumber);
-                    Type.setText(type);
+                    //Type.setText(type);
 
                 }
 
