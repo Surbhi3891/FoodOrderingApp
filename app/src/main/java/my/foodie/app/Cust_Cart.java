@@ -25,7 +25,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.paypal.pyplcheckout.pojo.To;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 
@@ -40,7 +42,8 @@ public class Cust_Cart extends Fragment {
     TextView total;
     TextView tax;
     Button continueBtn;
-    public static int TotalBill = 0;
+    public static float TotalBill = 0;
+    public static float SubTotalAmount = 0;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -108,11 +111,15 @@ public class Cust_Cart extends Fragment {
 
                     CartModel cmd = datasnapshot.getValue(CartModel.class);
                     cart.add(cmd);
+                    final DecimalFormat df = new DecimalFormat("0.00");
 
-                        TotalBill = TotalBill+ (Integer.valueOf(cmd.getPrice()) * Integer.valueOf(cmd.getQuantity()));
-                        float taxest = (float) (0.0625 * TotalBill);
+                        TotalBill = Float.parseFloat(df.format(TotalBill+ (Float.valueOf(cmd.getPrice()) * Float.valueOf(cmd.getQuantity()))));
+
+
+                        float taxest = Float.parseFloat(df.format((float) (0.0625 * TotalBill)));
                         total.setText(String.valueOf(TotalBill) + "$");
                         tax.setText(String.valueOf(taxest) + "$");
+                        SubTotalAmount = Float.parseFloat(df.format(TotalBill + taxest));
                 }
 
                 cartadapter.notifyDataSetChanged();

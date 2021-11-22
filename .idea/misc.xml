@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/PJ/.gradle/caches/transforms-3/a10b7011221113561b5411d3ca0808ab/transformed/jetified-android-sdk-0.2.0/res/drawable/rounded_view.xml" value="0.1" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/drawable-anydpi/bg.xml" value="0.28512820512820514" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/drawable-anydpi/icon_launcher.xml" value="0.28512820512820514" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/drawable-anydpi/iconbg3.xml" value="0.17037037037037037" />
@@ -13,6 +14,7 @@
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/drawable/buttonblue.xml" value="0.22777777777777777" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/drawable/buttongreen.xml" value="0.22777777777777777" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/drawable/buttonred.xml" value="0.28512820512820514" />
+        <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/drawable/circle.xml" value="1.2178571428571427" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/drawable/ic_baseline_home.xml" value="0.20104166666666667" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/drawable/ic_baseline_usertype.xml" value="0.21770833333333334" />
         <entry key="..\:/Users/PJ/AndroidStudioProjects/Foodie/app/src/main/res/drawable/purplebck.xml" value="0.28512820512820514" />

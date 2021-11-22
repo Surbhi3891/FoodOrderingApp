@@ -29,7 +29,8 @@ public class Cust_Profile extends Fragment {
 
     DatabaseReference dbRef ;
     TextView name, email, address, phone, usertype;
-    Button UpdateProfile, logOutprofile;
+    Button UpdateProfile;
+    TextView logOutprofile;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -117,12 +118,12 @@ public class Cust_Profile extends Fragment {
                     String phone_number = userProfile.phone;
                     String loc = userProfile.address +", " +userProfile.city+", " +userProfile.state+", " +userProfile.zip;
                     String emailID = userProfile.email;
-                    //String userType = userProfile.type;
+
                     name.setText(fullname);
                     email.setText(emailID);
                     phone.setText(phone_number);
                     address.setText(loc);
-                    //usertype.setText(userType);
+
 
                 }
             }

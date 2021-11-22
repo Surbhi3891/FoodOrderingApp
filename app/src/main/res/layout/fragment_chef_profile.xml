@@ -3,52 +3,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bckgnd2"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ChefProfile">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
+
         android:orientation="vertical"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        android:background="@drawable/background_color"
         app:layout_constraintRight_toRightOf="parent"
-        android:padding="30dp"
+        android:padding="20dp"
         android:gravity="center">
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="My Account"
+            android:textStyle="bold"
+            android:textColor="#D35620A5"
+            android:textSize="22sp"
+            android:padding="10dp"
+            android:layout_marginBottom="20dp"
+            />
+
         <TextView
             android:id="@+id/fullname_profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_baseline_profile_black"
+            android:drawableLeft="@drawable/ic_baseline_person_gray"
+            android:drawablePadding="5dp"
             android:textSize="18sp"
-            android:paddingBottom="10dp"
-            android:textStyle="bold"/>
+            android:padding="5dp"
+            />
         <TextView
             android:id="@+id/email_profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_baseline_email_24"
+            android:drawableLeft="@drawable/ic_baseline_email_gray"
             android:textSize="18sp"
-            android:paddingBottom="10dp"
-            android:textStyle="bold"/>
+            android:drawablePadding="5dp"
+            android:padding="5dp"
+            />
         <TextView
             android:id="@+id/mobile_profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_baseline_phone_black"
-            android:textSize="25sp"
-            android:paddingBottom="10dp"
-            android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/location_profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_baseline_location_"
+            android:drawableLeft="@drawable/ic_baseline_local_phone_gray"
             android:textSize="18sp"
-            android:paddingBottom="10dp"
-            android:textStyle="bold"/>
+            android:drawablePadding="5dp"
+            android:padding="5dp"
+           />
+
         <!--TextView
             android:id="@+id/logintype_profile"
             android:layout_width="match_parent"
@@ -57,6 +68,15 @@
             android:textSize="18sp"
             android:paddingBottom="10dp"
             android:textStyle="bold"/-->
+        <TextView
+            android:id="@+id/location_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_location_on_gray"
+            android:padding="5dp"
+            android:drawablePadding="5dp"
+            android:textSize="18sp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -70,24 +90,25 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:background="@drawable/btn_gray"
+                android:background="@drawable/purplebutton"
                 android:gravity="center"
                 android:padding="15dp"
-                android:text="Update "
+                android:text="Update Profile"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp" />
 
-            <Button
+            <TextView
                 android:id="@+id/signOut_Btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:background="@drawable/purplebutton"
                 android:gravity="center"
                 android:padding="15dp"
-                android:text="Logout"
-                android:textColor="#FFFFFF"
+                android:text="Sign Out"
+                android:textColor="#D35620A5"
+                android:textAllCaps="true"
+                android:textStyle="bold"
                 android:textSize="16sp" />
         </LinearLayout>
 

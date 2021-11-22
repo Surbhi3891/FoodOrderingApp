@@ -138,10 +138,7 @@ public class Chef_PostDish extends Fragment {
             }
         });
 
-         if(acceptOrder.isChecked()==true){
-             acceptingOrders="Yes";
-         }else{acceptingOrders="No";
-         }
+
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         userID = user.getUid();
@@ -170,6 +167,11 @@ public class Chef_PostDish extends Fragment {
      postItem.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
+             if(acceptOrder.isChecked()==true){
+                 acceptingOrders="Yes";
+             }
+             if(acceptOrder.isChecked()==false){acceptingOrders="No";
+             }
              fooditem = foodItem.getText().toString().trim();
              desc=foodDesc.getText().toString().trim();
              ingredient = foodIngridients.getText().toString().trim();

@@ -24,8 +24,9 @@ import java.util.zip.Inflater;
 
 public class ChefProfile extends Fragment {
     DatabaseReference dbRef ;
-    TextView name, email, address, phone, usertype;
-    Button UpdateProfile, logOutprofile;
+    TextView name, email, address, phone;
+    Button UpdateProfile;
+    TextView logOutprofile;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -114,11 +115,11 @@ public class ChefProfile extends Fragment {
                     String phone_number = userProfile.phone;
                     String loc = userProfile.address +", " +userProfile.city+", " +userProfile.state+", " +userProfile.zip;
                     String emailID = userProfile.email;
-                    //String userType = userProfile.type;
                     name.setText(fullname);
                     email.setText(emailID);
                     phone.setText(phone_number);
                     address.setText(loc);
+
                     //usertype.setText(userType);
 
                 }
