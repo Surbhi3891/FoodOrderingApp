@@ -20,13 +20,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pick-up"
-            android:textColor="@color/Red" />
+            android:textColor="@color/purple_500" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Deliver"
-            android:textColor="@color/Red" />
+            android:textColor="@color/purple_500" />
     </LinearLayout>
 
     <LinearLayout
@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/modeofdelivery"
-            android:layout_marginBottom="5dp"
+            android:layout_margin="5dp"
             android:text="Items"
             android:textColor="@color/black"
             android:textSize="20sp" />
@@ -65,18 +65,26 @@
         android:orientation="horizontal">
 
         <TextView
-            android:paddingLeft="5dp"
-            android:layout_width="250dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
             android:text="Subtotal"
-            android:textColor="@color/black"></TextView>
+            android:textColor="@color/purple_500"
+            android:textSize="16sp"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/TotalAmount"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="end"
-            android:textColor="@color/black"></TextView>
+            android:layout_marginRight="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="16sp"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -87,28 +95,36 @@
 
         <TextView
             android:paddingLeft="5dp"
-            android:layout_width="250dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="16sp"
             android:text="Estimated Tax"
-            android:textColor="@color/black"></TextView>
+            android:textColor="@color/purple_500"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/Tax"
-            android:gravity="end"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Subtotal"
-            android:textColor="@color/black"></TextView>
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/black"/>
     </LinearLayout>
+
     <Button
         android:id="@+id/ContinueBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/buttonred"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="5dp"
+        android:background="@drawable/purplebutton"
         android:text="Continue"
-        android:layout_marginBottom="7dp"
-        android:textColor="@color/white"
-        android:layout_alignParentBottom="true"/>
+        android:textColor="@color/white" />
 
 
 </RelativeLayout>
