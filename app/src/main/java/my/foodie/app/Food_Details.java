@@ -52,7 +52,7 @@ public class Food_Details extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    String fooditem,Desc,ingd,img,price,cal,chefname,itemID,userid,chefPhoneNumber,acceptingOrders;
+    String fooditem,Desc,ingd,img,price,cal,chefname,itemID,userid,chefPhoneNumber,acceptingOrders,chefAddress;
     ImageView Fd_Img;
     TextView Fd_name , Fd_desc, Fd_ing, Fd_price, Fd_cal, Fd_chef,Fd_chefContact ;
     //Button Fd_Delete;
@@ -70,7 +70,7 @@ public class Food_Details extends Fragment {
     public Food_Details() {
 
     }
-    public Food_Details(String fooditem,String Desc, String ingd,String img,String price,String cal,String chefname, String itemID,String userid,String chefPhoneNumber,String acceptingOrders) {
+    public Food_Details(String fooditem,String Desc, String ingd,String img,String price,String cal,String chefname, String itemID,String userid,String chefPhoneNumber,String acceptingOrders,String chefAddress) {
 
         this.fooditem = fooditem;
         this.Desc = Desc;
@@ -83,6 +83,7 @@ public class Food_Details extends Fragment {
         this.userid=userid;
         this.chefPhoneNumber=chefPhoneNumber;
         this.acceptingOrders=acceptingOrders;
+        this.chefAddress=chefAddress;
 
 
 
@@ -256,7 +257,7 @@ public class Food_Details extends Fragment {
         String id = user.getUid();
 
 
-        CartItem cartitem = new CartItem(fooditem, price, chefname, itemCount.getNumber(), saveCurrentDate, saveCurrTime, itemID, userid,chefPhoneNumber);
+        CartItem cartitem = new CartItem(fooditem, price, chefname, itemCount.getNumber(), saveCurrentDate, saveCurrTime, itemID, userid,chefPhoneNumber,chefAddress);
 
         FirebaseDatabase.getInstance().getReference("Cart List").child(id).child(itemID).setValue(cartitem).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

@@ -11,12 +11,10 @@
         android:id="@+id/modeofdelivery"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginBottom="5dp"
-        android:orientation="horizontal"
         android:gravity="center"
-        >
+        android:orientation="horizontal">
 
-        <Button
+        <!--Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pick-up"
@@ -26,7 +24,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Deliver"
-            android:textColor="@color/purple_500" />
+            android:textColor="@color/purple_500" /-->
+        <RadioGroup
+            android:id="@+id/deliverymode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radiopickup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:paddingRight="10dp"
+                android:text="Pick Up" />
+
+            <RadioButton
+                android:id="@+id/radioDelivery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="Delivery" />
+
+            <TextView
+                android:id="@+id/deliveryfee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:text="$10 "
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </RadioGroup>
+
     </LinearLayout>
 
     <LinearLayout
@@ -70,7 +100,7 @@
             android:paddingLeft="5dp"
             android:text="Subtotal"
             android:textColor="@color/purple_500"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <View
             android:layout_width="0dp"
@@ -82,24 +112,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
-            android:textStyle="bold"
             android:textColor="@color/black"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/taxLL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/ContinueBtn"
-        android:id="@+id/taxLL"
         android:orientation="horizontal">
 
         <TextView
-            android:paddingLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:paddingLeft="5dp"
             android:text="Estimated Tax"
-            android:textColor="@color/purple_500"/>
+            android:textColor="@color/purple_500"
+            android:textSize="16sp" />
+
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -109,12 +141,14 @@
             android:id="@+id/Tax"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Subtotal"
-            android:textStyle="bold"
-            android:textSize="16sp"
             android:layout_marginRight="20dp"
-            android:textColor="@color/black"/>
+            android:text="Subtotal"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </LinearLayout>
+
+
 
     <Button
         android:id="@+id/ContinueBtn"

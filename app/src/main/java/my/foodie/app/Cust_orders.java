@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,7 +20,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 
 public class Cust_orders extends Fragment {
@@ -28,6 +33,7 @@ public class Cust_orders extends Fragment {
     DatabaseReference dbref;
     orderADAP cust_order_adapter;
     ArrayList<OrderModel> cust_order;
+    TextView topHeading;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -68,6 +74,7 @@ public class Cust_orders extends Fragment {
         View v = inflater.inflate(R.layout.fragment_cust_orders, container, false);
 
         recview_cust_order = v.findViewById(R.id.Cust_orderList);
+        topHeading = v.findViewById(R.id.cu_orderdetails);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String userid = user.getUid();
         dbref = FirebaseDatabase.getInstance().getReference("Orders").child(userid);
@@ -76,6 +83,7 @@ public class Cust_orders extends Fragment {
         cust_order = new ArrayList<>();
         cust_order_adapter = new orderADAP(getContext(),cust_order);
         recview_cust_order.setAdapter(cust_order_adapter);
+
         dbref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -83,9 +91,17 @@ public class Cust_orders extends Fragment {
 
 
                     OrderModel od = ds.getValue(OrderModel.class);
+
                     cust_order.add(od);
                 }
                 cust_order_adapter.notifyDataSetChanged();
+                if(cust_order.size()==0){
+
+                    topHeading.setText("You have not placed any orders yet.");
+                }
+                if(cust_order.size()>0){
+                    topHeading.setText("Order Details");
+                }
 
             }
 
@@ -94,6 +110,7 @@ public class Cust_orders extends Fragment {
 
             }
         });
+
         return v;
     }
 }

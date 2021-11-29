@@ -30,6 +30,7 @@
             android:textSize="23sp"
             android:textStyle="bold" />
 
+
         <EditText
             android:id="@+id/cnf_name"
             android:layout_width="match_parent"
@@ -75,11 +76,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:background="@drawable/buttonred"
+            android:background="@drawable/purplebutton"
             android:padding="10dp"
-            android:text="Checkout"
+            android:text="Continue to payment"
             android:textColor="@color/white"
-            android:textSize="23sp" />
+            android:textSize="16sp" />
 
 
     </LinearLayout>

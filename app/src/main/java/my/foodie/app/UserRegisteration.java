@@ -206,8 +206,7 @@ public class UserRegisteration extends AppCompatActivity {
                                    message.dismiss();
 
                                    Toast.makeText(UserRegisteration.this, "User already exists..", Toast.LENGTH_LONG).show();
-                                   System.out.println("task third" + task.isSuccessful());
-                                   System.out.println(" Unsuccessful");
+
                                }
                            }
                        });

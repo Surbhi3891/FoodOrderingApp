@@ -49,6 +49,7 @@ public class CustomerView extends AppCompatActivity {
 
                     case R.id.switchType:
                         startActivity(new Intent(CustomerView.this,SelectLogin.class));
+                        finish();
                         break;
                 }
                 //getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer_Cust,t).commit();

@@ -86,7 +86,7 @@ public class Adap extends RecyclerView.Adapter<Adap.myViewholder> implements Fil
             @Override
             public void onClick(View v) {
                 AppCompatActivity activity = (AppCompatActivity)v.getContext();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new Food_Details(m.getFoodItem(),m.getFoodDesc(),m.getFoodIngredients(),m.getImage(),m.getFoodPrice(),m.getFoodCal(),m.getChefName(),m.getItemID(),m.getUserid(),m.getChefPhoneNumber(),m.getAcceptingOrders())).addToBackStack(null).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new Food_Details(m.getFoodItem(),m.getFoodDesc(),m.getFoodIngredients(),m.getImage(),m.getFoodPrice(),m.getFoodCal(),m.getChefName(),m.getItemID(),m.getUserid(),m.getChefPhoneNumber(),m.getAcceptingOrders(),m.getChefAddress())).addToBackStack(null).commit();
             }
         });
 

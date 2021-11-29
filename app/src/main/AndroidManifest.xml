@@ -3,10 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="my.foodie.app">
 
-    <uses-permission android:name="android.permission.SEND_SMS"></uses-permission>
-
+    <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.INTERNET" />
-
 
     <application
         android:allowBackup="true"
@@ -17,6 +15,12 @@
         android:theme="@style/Theme.Foodie"
         android:usesCleartextTraffic="true"
         tools:replace="android:theme">
+        <activity
+            android:name=".ViewReport"
+            android:exported="true" />
+        <activity
+            android:name=".order_info"
+            android:exported="true" />
         <activity
             android:name=".VerifyOTP"
             android:exported="true" />
@@ -31,12 +35,10 @@
             android:exported="true" />
         <activity
             android:name=".CustomerView"
-            android:exported="true"
-            />
+            android:exported="true" />
         <activity
             android:name=".RecyclerViewNav"
-            android:exported="true"
-          />
+            android:exported="true" />
         <activity
             android:name=".Update_Profile"
             android:exported="true" />
@@ -51,8 +53,7 @@
             android:exported="true" />
         <activity
             android:name=".EmailLogin"
-            android:exported="true"
-            android:parentActivityName=".MainActivity"/>
+            android:exported="true" />
         <activity
             android:name=".SelectLogin"
             android:exported="true"
@@ -72,7 +73,7 @@
 
         <meta-data
             android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" /> <!-- register -->
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

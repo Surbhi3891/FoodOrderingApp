@@ -69,17 +69,27 @@ public class Payment extends AppCompatActivity {
     PaymentButton payPalButton;
     Button cashPayment;
     String orderid;
-    String chefname, itemsAndquantity="",chefID,chefPhoneNumber;
-    int subtotal = 0;
+    String chefname, itemsAndquantity="",chefID,chefPhoneNumber,chefAddress,customerid,amount;
+    float subtotalwithdelivery = 0;
+    String id;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         System.out.println("Inside payment page..................");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
-
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        id = user.getUid();
         payPalButton = findViewById(R.id.payPalButton);
-        String amount = String.valueOf(Cust_Cart.SubTotalAmount);
+        if(Cust_Cart.deliveryMode.equals("Delivery")){
+            subtotalwithdelivery = Cust_Cart.SubTotalAmount + 10;
+        }
+        if(Cust_Cart.deliveryMode.equals("Pick Up")){
+            subtotalwithdelivery = Cust_Cart.SubTotalAmount;
+        }
+        //String amount = String.valueOf(Cust_Cart.SubTotalAmount);
+       amount = String.valueOf(subtotalwithdelivery);
         cashPayment= findViewById(R.id.cashpay);
         FirebaseDatabase.getInstance().getReference("Cart List").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
@@ -90,8 +100,8 @@ public class Payment extends AppCompatActivity {
 
                     chefname = ds.child("chefName").getValue().toString();
                     chefPhoneNumber="+1"+ds.child("chefPhoneNumber").getValue().toString();
-
-                    itemsAndquantity= itemsAndquantity +ds.child("foodName").getValue().toString() +","+ ds.child("quantity").getValue().toString()+"; ";
+                    chefAddress=ds.child("chefAddress").getValue().toString();
+                    itemsAndquantity= itemsAndquantity +ds.child("foodName").getValue().toString() +"- "+ ds.child("quantity").getValue().toString()+"; ";
                     chefID = ds.child("chefID").getValue().toString();
                     //subtotal = subtotal + (Integer.valueOf(ds.child("price").getValue().toString())* Integer.valueOf(ds.child("quantity").getValue().toString()));
 
@@ -105,21 +115,7 @@ public class Payment extends AppCompatActivity {
             }
         });
 
-//        FirebaseDatabase.getInstance().getReference("Users").child(chefID).addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                User userProfile = snapshot.getValue(User.class);
-//                if(userProfile != null){
-//
-//                    ChefPhoneNumber = userProfile.phone;
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+
 
 
 
@@ -204,7 +200,8 @@ public class Payment extends AppCompatActivity {
                             @Override
                             public void onCaptureComplete(@NotNull CaptureOrderResult result) {
                                 Log.i("CaptureOrder", String.format("CaptureOrderResult: %s", result));
-                                startActivity(new Intent(Payment.this,ConfirmDetails.class));
+                                placeOrder("PayPal Payment");
+                                //startActivity(new Intent(Payment.this,ConfirmDetails.class));
                             }
                         });
                     }
@@ -229,12 +226,12 @@ public class Payment extends AppCompatActivity {
                 orderid = "Order" + String.valueOf(100001+ (int)(Math.random()*899999));
         //final String[] chefname = new String[1];
         String saveCurrentDate, saveCurrTime;
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String id = user.getUid();
+        customerid= id;
+
 
         Calendar caldate = Calendar.getInstance();
 
-        SimpleDateFormat currDate = new SimpleDateFormat("MM dd, yyyy");
+        SimpleDateFormat currDate = new SimpleDateFormat("MM/dd/yyyy");
         saveCurrentDate = currDate.format(caldate.getTime());
         SimpleDateFormat currTime = new SimpleDateFormat("HH:mm:ss a");
         saveCurrTime = currTime.format(caldate.getTime());
@@ -261,11 +258,12 @@ public class Payment extends AppCompatActivity {
 //        });
 
         AlertDialog.Builder builder = new AlertDialog.Builder(Payment.this);
-        OrderModel orderdetails = new OrderModel(orderid,ConfirmDetails.cnfName, ConfirmDetails.cnfAddress, ConfirmDetails.cnfZip, chefname, itemsAndquantity, String.valueOf(Cust_Cart.SubTotalAmount), paymentMode, "Pickup", saveCurrentDate, saveCurrTime,"Confirmed",ConfirmDetails.cnfPhone);
+        OrderModel orderdetails = new OrderModel(orderid,ConfirmDetails.cnfName, ConfirmDetails.cnfAddress, ConfirmDetails.cnfZip, chefname, itemsAndquantity, amount, paymentMode,Cust_Cart.deliveryMode, saveCurrentDate, saveCurrTime,"Confirmed",ConfirmDetails.cnfPhone,chefAddress,chefID,customerid);
         FirebaseDatabase.getInstance().getReference("Orders").child(id).child(orderid).setValue(orderdetails).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
+                    FirebaseDatabase.getInstance().getReference("Chef_Orders").child(chefID).child(orderid).setValue(orderdetails);
                     message.dismiss();
 
                     builder.setTitle("Order Confirmation!");
@@ -306,7 +304,7 @@ public class Payment extends AppCompatActivity {
         }
             catch(Exception e ){
 
-            Toast.makeText(this,"Failed ",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Please change the permission settings of the app to send SMS notification ",Toast.LENGTH_LONG).show();
         }
 
 

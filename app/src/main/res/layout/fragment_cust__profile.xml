@@ -7,6 +7,7 @@ android:background="@drawable/bckgnd2"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 tools:context=".Cust_Profile">
 
+<!-- TODO: Update blank fragment layout -->
 <LinearLayout
 
     android:orientation="vertical"
@@ -19,17 +20,17 @@ tools:context=".Cust_Profile">
     app:layout_constraintRight_toRightOf="parent"
     android:padding="20dp"
     android:gravity="center">
+
     <TextView
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="My Account"
-        android:textStyle="bold"
+        android:layout_marginBottom="20dp"
+        android:padding="10dp"
+        android:text="My Account Test"
         android:textColor="#D35620A5"
         android:textSize="22sp"
-        android:padding="10dp"
-        android:layout_marginBottom="20dp"
-        />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/fullname_profile"
@@ -84,7 +85,7 @@ tools:context=".Cust_Profile">
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/updateP_btn"
+            android:id="@+id/update_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -92,7 +93,19 @@ tools:context=".Cust_Profile">
             android:background="@drawable/purplebutton"
             android:gravity="center"
             android:padding="15dp"
-            android:text="Update Profile"
+            android:text="Update Profile Test"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+        <Button
+            android:id="@+id/view_report"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/purplebutton"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="View Report"
             android:textColor="#FFFFFF"
             android:textSize="16sp" />
 

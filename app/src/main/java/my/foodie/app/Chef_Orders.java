@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,6 +29,7 @@ public class Chef_Orders extends Fragment {
     DatabaseReference dbref;
     orderADAP order_adapter;
     ArrayList<OrderModel> order;
+    TextView headerText;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -68,9 +70,10 @@ public class Chef_Orders extends Fragment {
         View v = inflater.inflate(R.layout.fragment_chef__orders, container, false);
 
         recview_order = v.findViewById(R.id.orderList);
+        headerText=v.findViewById(R.id.ch_orderdetails);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String userid = user.getUid();
-        dbref = FirebaseDatabase.getInstance().getReference("Orders").child(userid);
+        dbref = FirebaseDatabase.getInstance().getReference("Chef_Orders").child(userid);
         recview_order.setHasFixedSize(true);
         recview_order.setLayoutManager(new LinearLayoutManager(getContext()));
         order = new ArrayList<>();
@@ -86,6 +89,13 @@ public class Chef_Orders extends Fragment {
                     order.add(od);
                 }
                 order_adapter.notifyDataSetChanged();
+                if(order.size()==0){
+
+                    headerText.setText("You have no orders.");
+                }
+                if(order.size()>0){
+                    headerText.setText("Order Details");
+                }
 
             }
 

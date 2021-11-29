@@ -29,7 +29,7 @@ public class Cust_Profile extends Fragment {
 
     DatabaseReference dbRef ;
     TextView name, email, address, phone, usertype;
-    Button UpdateProfile;
+    Button UpdateProfile,viewReport;
     TextView logOutprofile;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -78,14 +78,22 @@ public class Cust_Profile extends Fragment {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_chef_profile, container, false);
 
-        View V = inflater.inflate(R.layout.fragment_chef_profile, container,false);
+        View V = inflater.inflate(R.layout.fragment_cust__profile, container,false);
         name = V.findViewById(R.id.fullname_profile);
         email=V.findViewById(R.id.email_profile);
         address=V.findViewById(R.id.location_profile);
         phone=V.findViewById(R.id.mobile_profile);
+        viewReport = V.findViewById(R.id.view_report);
         //usertype=V.findViewById(R.id.logintype_profile);
-        UpdateProfile=V.findViewById(R.id.updateP_btn);
+        UpdateProfile=V.findViewById(R.id.update_btn);
         logOutprofile=V.findViewById(R.id.signOut_Btn);
+        viewReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),ViewReport.class));
+
+            }
+        });
         UpdateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,12 +126,12 @@ public class Cust_Profile extends Fragment {
                     String phone_number = userProfile.phone;
                     String loc = userProfile.address +", " +userProfile.city+", " +userProfile.state+", " +userProfile.zip;
                     String emailID = userProfile.email;
-
+                    //String userType = userProfile.type;
                     name.setText(fullname);
                     email.setText(emailID);
                     phone.setText(phone_number);
                     address.setText(loc);
-
+                    //usertype.setText(userType);
 
                 }
             }

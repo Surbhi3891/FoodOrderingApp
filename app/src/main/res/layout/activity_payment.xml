@@ -8,26 +8,37 @@
     android:layout_gravity="center"
     tools:context=".Payment">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        >
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="Paypal Payment"
+        android:textSize="20sp"
+        android:text="Please select the payment method "
         android:gravity="center"
-        android:layout_marginTop="50dp"/>
+        android:paddingTop="20dp"
+        android:paddingBottom="30dp"/>
     <Button
         android:id="@+id/cashpay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="pay by cash"
-        android:background="@drawable/buttonred"
+        android:background="@drawable/purplebutton"
         android:textColor="@color/white"
-        android:textSize="23sp"/>
+        android:textSize="16sp"/>
 
     <com.paypal.checkout.paymentbutton.PayPalButton
         android:id="@+id/payPalButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"/>
+        android:layout_marginTop="35dp"/>
+    </LinearLayout>
 
 </LinearLayout>

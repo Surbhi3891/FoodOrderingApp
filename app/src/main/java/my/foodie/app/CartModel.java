@@ -2,7 +2,11 @@ package my.foodie.app;
 
 public class CartModel {
 
-    String chefName;
+    String chefName,chefAddress;
+
+    public String getChefAddress() {
+        return chefAddress;
+    }
 
     public String getChefName() {
         return chefName;

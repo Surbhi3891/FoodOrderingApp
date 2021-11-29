@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,6 +31,8 @@ public class ChefHomeFragment extends Fragment {
     DatabaseReference data;
     Adap myadapter;
     ArrayList<model> food;
+    TextView topHeader;
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -65,6 +69,7 @@ public class ChefHomeFragment extends Fragment {
        View root= inflater.inflate(R.layout.fragment_chef_home, container, false);
 
        recview = root.findViewById(R.id.menulist);
+       topHeader= root.findViewById(R.id.ch_header);
        data = FirebaseDatabase.getInstance().getReference("FoodMenu");
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -94,6 +99,13 @@ public class ChefHomeFragment extends Fragment {
                    }
                }
                myadapter.notifyDataSetChanged();
+               if(food.size()==0){
+
+                   topHeader.setText("You have not posted any items yet.");
+               }
+               if(food.size()>0){
+                   topHeader.setText("Your Posted Items");
+               }
 
            }
 

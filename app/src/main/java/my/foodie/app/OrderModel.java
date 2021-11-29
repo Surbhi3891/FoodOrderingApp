@@ -5,6 +5,16 @@ public class OrderModel {
     String name;
     String orderStatus;
    String customerPhoneNumber;
+   String chefAddress;
+   String chefID,customerid;
+
+    public String getChefID() {
+        return chefID;
+    }
+
+    public String getChefAddress() {
+        return chefAddress;
+    }
 
     public OrderModel() {
     }
@@ -15,7 +25,7 @@ public class OrderModel {
         return orderStatus;
     }
 
-    public OrderModel(String orderid, String name, String address, String zip, String chefname, String items, String price, String paymenttype, String deliverymode, String date, String time, String orderStatus, String customerPhoneNumber) {
+    public OrderModel(String orderid, String name, String address, String zip, String chefname, String items, String price, String paymenttype, String deliverymode, String date, String time, String orderStatus, String customerPhoneNumber,String chefAddress,String chefID,String customerid) {
 
         this.orderid=orderid;
         this.name = name;
@@ -30,6 +40,9 @@ public class OrderModel {
         this.time = time;
         this.orderStatus = orderStatus;
         this.customerPhoneNumber=customerPhoneNumber;
+        this.chefAddress=chefAddress;
+        this.chefID=chefID;
+        this.customerid=customerid;
     }
 
 
@@ -52,6 +65,10 @@ public class OrderModel {
 
     public String getZip() {
         return zip;
+    }
+
+    public String getCustomerid() {
+        return customerid;
     }
 
     public String getChefname() {

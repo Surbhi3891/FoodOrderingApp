@@ -93,7 +93,7 @@
                 android:background="@drawable/purplebutton"
                 android:gravity="center"
                 android:padding="15dp"
-                android:text="Update Profile"
+                android:text="Update Profile Chef"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp" />
 

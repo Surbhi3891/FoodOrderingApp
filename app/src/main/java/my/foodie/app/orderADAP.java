@@ -40,9 +40,17 @@ public class orderADAP extends RecyclerView.Adapter<orderADAP.orderViewholder> {
     public void onBindViewHolder(@NonNull orderADAP.orderViewholder holder, int position) {
            OrderModel c = orderList.get(position);
            holder.orderID.setText(c.getOrderid());
-           holder.orderTotal.setText(c.getPrice());
+           holder.orderTotal.setText("$"+c.getPrice());
            holder.orderDate.setText(c.getDate());
            holder.orderStatus.setText(c.getOrderStatus());
+           holder.orderID.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   AppCompatActivity activity = (AppCompatActivity)v.getContext();
+                   activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new OrderDetails(c.getOrderid(),c.getName(),c.getDate(),c.getItems(),c.getPrice(),c.getPaymenttype(),c.getChefAddress(),c.getAddress(),c.getOrderStatus(),c.getDeliverymode(),c.getCustomerid(),c.chefID,c.getCustomerPhoneNumber(),c.getChefname())).addToBackStack(null).commit();
+
+               }
+           });
 
 
 

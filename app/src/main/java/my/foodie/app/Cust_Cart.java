@@ -16,6 +16,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,10 +42,14 @@ public class Cust_Cart extends Fragment {
     cartAdap cartadapter;
     ArrayList<CartModel> cart;
     int TotalAmount;
-    TextView total;
+    TextView total,header;
+    RadioGroup deliverymode;
+    RadioButton radioButton;
     TextView tax;
     Button continueBtn;
+    LinearLayout radio,totalLL,taxLL;
     public static float TotalBill = 0;
+    public static String deliveryMode;
     public static float SubTotalAmount = 0;
 
     private static final String ARG_PARAM1 = "param1";
@@ -84,19 +91,27 @@ public class Cust_Cart extends Fragment {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String userid = user.getUid();
         data = FirebaseDatabase.getInstance().getReference("Cart List").child(userid);
-
+        radio = V.findViewById(R.id.modeofdelivery);
+        totalLL=V.findViewById(R.id.subtotalLL);
+        taxLL=V.findViewById(R.id.taxLL);
         recview_cart.setHasFixedSize(true);
         recview_cart.setLayoutManager(new LinearLayoutManager(getContext()));
         cart = new ArrayList<>();
         cartadapter = new cartAdap(getContext(),cart);
         recview_cart.setAdapter(cartadapter);
         total = V.findViewById(R.id.TotalAmount);
+        header=V.findViewById(R.id.itemList);
         tax = V.findViewById(R.id.Tax);
         continueBtn = V.findViewById(R.id.ContinueBtn);
+        deliverymode=V.findViewById(R.id.deliverymode);
+
 
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int selectedID = deliverymode.getCheckedRadioButtonId();
+                radioButton = V.findViewById(selectedID);
+                deliveryMode = radioButton.getText().toString().trim();
                 startActivity(new Intent(getActivity(),ConfirmDetails.class));
             }
         });
@@ -119,10 +134,18 @@ public class Cust_Cart extends Fragment {
                         float taxest = Float.parseFloat(df.format((float) (0.0625 * TotalBill)));
                         total.setText(String.valueOf(TotalBill) + "$");
                         tax.setText(String.valueOf(taxest) + "$");
-                        SubTotalAmount = Float.parseFloat(df.format(TotalBill + taxest));
+
+                        SubTotalAmount = Float.parseFloat(df.format(TotalBill + taxest ));
                 }
 
                 cartadapter.notifyDataSetChanged();
+                if(cart.size()==0){
+                    header.setText("There are no items in your cart.");
+                    continueBtn.setVisibility(View.INVISIBLE);
+                    totalLL.setVisibility(View.INVISIBLE);
+                    taxLL.setVisibility(View.INVISIBLE);
+                    deliverymode.setVisibility(View.INVISIBLE);
+                }
 
             }
 

@@ -11,38 +11,92 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp">
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/orderId"
         android:padding="5dp"
-        android:textColor="@color/black"
+        android:text="Order#"
+        android:textColor="@color/purple_500"
         android:textStyle="bold"
-        android:textSize="15sp"/>
+        android:textSize="20sp"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/orderTotal"
             android:padding="5dp"
-            android:textColor="@color/black"
+            android:text="$5"
+            android:textColor="#474545"
             android:textStyle="bold"
-            android:textSize="15sp"/>
+            android:textSize="18sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp">
+
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/orderdate"
+            android:text="OrderStatus"
             android:padding="5dp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="15sp"/>
+            android:textColor="#474545"
+            android:textSize="14sp"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/orderstatus"
             android:padding="5dp"
-            android:textColor="@color/black"
+            android:text="test"
+            android:textColor="@color/darkgreen"
             android:textStyle="bold"
-            android:textSize="15sp"/>
+            android:textSize="16sp"/>
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:padding="5dp"
+                android:textColor="#474545"
+                android:textSize="14sp"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/orderdate"
+                android:padding="5dp"
+                android:text="test"
+                android:textColor="#474545"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
 
     </LinearLayout>
 
