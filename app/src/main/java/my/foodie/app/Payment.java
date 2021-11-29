@@ -258,7 +258,7 @@ public class Payment extends AppCompatActivity {
 //        });
 
         AlertDialog.Builder builder = new AlertDialog.Builder(Payment.this);
-        OrderModel orderdetails = new OrderModel(orderid,ConfirmDetails.cnfName, ConfirmDetails.cnfAddress, ConfirmDetails.cnfZip, chefname, itemsAndquantity, amount, paymentMode,Cust_Cart.deliveryMode, saveCurrentDate, saveCurrTime,"Confirmed",ConfirmDetails.cnfPhone,chefAddress,chefID,customerid);
+        OrderModel orderdetails = new OrderModel(orderid,ConfirmDetails.cnfName, ConfirmDetails.cnfAddress, ConfirmDetails.cnfZip, chefname, itemsAndquantity, amount, paymentMode,Cust_Cart.deliveryMode, saveCurrentDate, saveCurrTime,"Confirmed",ConfirmDetails.cnfPhone,chefAddress,chefID,customerid,String.valueOf(Cust_Cart.TotalCalories));
         FirebaseDatabase.getInstance().getReference("Orders").child(id).child(orderid).setValue(orderdetails).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

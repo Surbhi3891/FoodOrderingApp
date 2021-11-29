@@ -193,7 +193,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/del"
                 android:layout_gravity="center"
-                android:drawableLeft="@drawable/ic_baseline_delete_30"
+                android:drawableLeft="@drawable/ic_twotone_delete_30"
                 android:layout_marginRight="10dp"/>
         </LinearLayout>
 

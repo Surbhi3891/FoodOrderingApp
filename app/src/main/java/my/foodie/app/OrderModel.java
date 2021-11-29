@@ -6,7 +6,7 @@ public class OrderModel {
     String orderStatus;
    String customerPhoneNumber;
    String chefAddress;
-   String chefID,customerid;
+   String chefID,customerid,foodCal;
 
     public String getChefID() {
         return chefID;
@@ -25,7 +25,11 @@ public class OrderModel {
         return orderStatus;
     }
 
-    public OrderModel(String orderid, String name, String address, String zip, String chefname, String items, String price, String paymenttype, String deliverymode, String date, String time, String orderStatus, String customerPhoneNumber,String chefAddress,String chefID,String customerid) {
+    public String getFoodCal() {
+        return foodCal;
+    }
+
+    public OrderModel(String orderid, String name, String address, String zip, String chefname, String items, String price, String paymenttype, String deliverymode, String date, String time, String orderStatus, String customerPhoneNumber, String chefAddress, String chefID, String customerid, String foodCal) {
 
         this.orderid=orderid;
         this.name = name;
@@ -43,6 +47,7 @@ public class OrderModel {
         this.chefAddress=chefAddress;
         this.chefID=chefID;
         this.customerid=customerid;
+        this.foodCal=foodCal;
     }
 
 

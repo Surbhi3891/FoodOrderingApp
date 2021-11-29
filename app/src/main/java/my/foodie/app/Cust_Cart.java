@@ -49,6 +49,7 @@ public class Cust_Cart extends Fragment {
     Button continueBtn;
     LinearLayout radio,totalLL,taxLL;
     public static float TotalBill = 0;
+    public static int TotalCalories=0;
     public static String deliveryMode;
     public static float SubTotalAmount = 0;
 
@@ -121,6 +122,7 @@ public class Cust_Cart extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 TotalBill = 0;
+                TotalCalories = 0;
 
                 for(DataSnapshot datasnapshot : snapshot.getChildren()){
 
@@ -129,6 +131,7 @@ public class Cust_Cart extends Fragment {
                     final DecimalFormat df = new DecimalFormat("0.00");
 
                         TotalBill = Float.parseFloat(df.format(TotalBill+ (Float.valueOf(cmd.getPrice()) * Float.valueOf(cmd.getQuantity()))));
+                        TotalCalories = TotalCalories + Integer.valueOf(cmd.getFoodCal());
 
 
                         float taxest = Float.parseFloat(df.format((float) (0.0625 * TotalBill)));

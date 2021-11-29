@@ -257,7 +257,7 @@ public class Food_Details extends Fragment {
         String id = user.getUid();
 
 
-        CartItem cartitem = new CartItem(fooditem, price, chefname, itemCount.getNumber(), saveCurrentDate, saveCurrTime, itemID, userid,chefPhoneNumber,chefAddress);
+        CartItem cartitem = new CartItem(fooditem, price, chefname, itemCount.getNumber(), saveCurrentDate, saveCurrTime, itemID, userid,chefPhoneNumber,chefAddress,cal);
 
         FirebaseDatabase.getInstance().getReference("Cart List").child(id).child(itemID).setValue(cartitem).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
